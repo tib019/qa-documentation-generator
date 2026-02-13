@@ -5,6 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Platform: Windows](https://img.shields.io/badge/Platform-Windows%2011-blue.svg)](https://www.microsoft.com/windows)
 [![PowerShell: 5.1+](https://img.shields.io/badge/PowerShell-5.1%2B-blue.svg)](https://docs.microsoft.com/powershell/)
+[![Azure DevOps](https://img.shields.io/badge/Azure%20DevOps-Pipeline%20Ready-blue.svg)](docs/AZURE_DEVOPS_SETUP.md)
 
 ---
 
@@ -18,6 +19,7 @@ A PowerShell-based tool that automatically generates professional QA documentati
 - 🔄 **Reproducible** - Same data = same document
 - 💾 **Version control friendly** - JSON + Markdown in Git
 - 🔒 **GDPR compliant** - Local processing, no cloud
+- 🚀 **Azure DevOps integration** - Automated CI/CD pipelines included
 
 ---
 
@@ -104,6 +106,52 @@ For the easiest experience, use the interactive menu:
 4. **Done!** 🎉
    - Find your generated Markdown document in the same folder
    - Copy to Azure DevOps Wiki, GitHub, or your documentation system
+
+---
+
+## 🔄 Azure DevOps Integration
+
+**NEW!** Automated documentation generation with Azure DevOps Pipelines.
+
+### Available Pipelines
+
+| Pipeline | Trigger | Purpose |
+|----------|---------|----------|
+| **Standard** | Git commit | Auto-generate docs on commit |
+| **Batch** | Manual | Generate all documents at once |
+| **Scheduled** | Daily 8 AM | Generate new/modified docs daily |
+
+### Quick Setup
+
+1. **Create Pipeline in Azure DevOps:**
+   - Pipelines → New Pipeline → GitHub
+   - Select repository: `tibo47-161/qa-documentation-generator`
+   - Choose existing YAML: `/azure-pipelines.yml`
+   - Run!
+
+2. **Benefits:**
+   - ✅ Automatic documentation on every commit
+   - ✅ Batch processing for multiple documents
+   - ✅ Scheduled daily generation
+   - ✅ Direct upload to Azure DevOps Wiki
+   - ✅ Email notifications (optional)
+
+3. **Full Documentation:**
+   - 📖 [Azure DevOps Setup Guide](docs/AZURE_DEVOPS_SETUP.md)
+   - 📋 [Pipeline Configuration](azure-pipelines.yml)
+   - 🔧 [Advanced Workflows](.azuredevops/pipelines/)
+
+**Example Workflow:**
+```bash
+# 1. Add new bug ticket data
+git add data/bug_3690.json
+git commit -m "Add bug ticket #3690"
+git push
+
+# 2. Pipeline runs automatically
+# 3. Generated documentation appears in build artifacts
+# 4. (Optional) Auto-uploaded to Wiki
+```
 
 ---
 

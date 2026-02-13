@@ -1,0 +1,126 @@
+# Azure DevOps Pipeline: Batch-Generierung aller QA-Dokumente
+# Generiert alle Dokumente aus einem data/ Ordner
+
+trigger: none  # Manuelle Ausführung
+
+parameters:
+  - name: documentType
+    displayName: 'Dokumenttyp'
+    type: string
+    default: 'All'
+    values:
+      - All
+      - BugTicket
+      - TestProtokoll
+      - SolutionConcept
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  dataPath: 'data'
+  outputPath: '$(Build.ArtifactStagingDirectory)/batch-docs'
+
+jobs:
+  - job: BatchGeneration
+    displayName: 'Batch Document Generation'
+    steps:
+      - checkout: self
+        displayName: 'Checkout Repository'
+
+      - task: PowerShell@2
+        displayName: 'Setup Environment'
+        inputs:
+          targetType: 'inline'
+          script: |
+            Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
+            New-Item -ItemType Directory -Force -Path "$(outputPath)"
+            Write-Host "Environment setup complete"
+
+      - task: PowerShell@2
+        displayName: 'Batch Generate Documents'
+        inputs:
+          targetType: 'inline'
+          script: |
+            $documentType = "${{ parameters.documentType }}"
+            Write-Host "Generating documents of type: $documentType"
+            
+            # Funktion zum Generieren von Dokumenten
+            function Generate-Documents {
+              param(
+                [string]$Pattern,
+                [string]$Template
+              )
+              
+              $jsonFiles = Get-ChildItem -Path "$(dataPath)" -Filter $Pattern -ErrorAction SilentlyContinue
+              
+              if ($jsonFiles.Count -eq 0) {
+                Write-Host "No files found matching pattern: $Pattern"
+                return
+              }
+              
+              Write-Host "Found $($jsonFiles.Count) files for template: $Template"
+              
+              foreach ($file in $jsonFiles) {
+                try {
+                  Write-Host "Processing: $($file.Name)"
+                  .\Generate-QADocument.ps1 -ConfigFile $file.FullName -Template $Template -OutputPath "$(outputPath)\$Template\$($file.BaseName).md"
+                  Write-Host "✓ Generated: $($file.BaseName).md"
+                } catch {
+                  Write-Host "✗ Error processing $($file.Name): $_"
+                }
+              }
+            }
+            
+            # Generiere basierend auf Parameter
+            if ($documentType -eq "All" -or $documentType -eq "BugTicket") {
+              Generate-Documents -Pattern "*bug*.json" -Template "BugTicket"
+            }
+            
+            if ($documentType -eq "All" -or $documentType -eq "TestProtokoll") {
+              Generate-Documents -Pattern "*test*.json" -Template "TestProtokoll"
+            }
+            
+            if ($documentType -eq "All" -or $documentType -eq "SolutionConcept") {
+              Generate-Documents -Pattern "*solution*.json" -Template "SolutionConcept"
+            }
+            
+            Write-Host "Batch generation complete"
+
+      - task: PowerShell@2
+        displayName: 'Generate Statistics'
+        inputs:
+          targetType: 'inline'
+          script: |
+            $allFiles = Get-ChildItem -Path "$(outputPath)" -Filter "*.md" -Recurse
+            
+            $stats = @"
+            # Batch Generation Statistics
+            
+            **Build:** $(Build.BuildNumber)
+            **Date:** $(Get-Date -Format "yyyy-MM-dd HH:mm:ss")
+            **Type:** ${{ parameters.documentType }}
+            
+            ## Summary
+            
+            - Total documents: $($allFiles.Count)
+            - Total size: $([math]::Round(($allFiles | Measure-Object -Property Length -Sum).Sum / 1KB, 2)) KB
+            
+            ## Documents by Type
+            
+            "@
+            
+            $byFolder = $allFiles | Group-Object { $_.Directory.Name }
+            foreach ($group in $byFolder) {
+              $stats += "`n- **$($group.Name):** $($group.Count) documents"
+            }
+            
+            $stats | Out-File -FilePath "$(outputPath)\BATCH_STATS.md" -Encoding UTF8
+            Write-Host $stats
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish Batch Documents'
+        inputs:
+          PathtoPublish: '$(outputPath)'
+          ArtifactName: 'batch-qa-documentation'
+          publishLocation: 'Container'
