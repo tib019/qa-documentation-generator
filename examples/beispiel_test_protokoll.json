@@ -1,0 +1,130 @@
+{
+  "Titel": "Version 1.3.5 Stage",
+  "Version": "1.3.5 Stage",
+  "Datum": "10.02.2026",
+  "Tester": "QA Team",
+  "Testumgebung": "Stage",
+  "TestTyp": "QT@Stage (Pre-Release Testing)",
+  "Dauer": "4 Stunden",
+  "Status": "Abgeschlossen",
+  "Testziele": [
+    "- Funktionalität der neuen Features testen",
+    "- Regressionstests für bestehende Funktionen",
+    "- Performance und Stabilität prüfen",
+    "- Bugs identifizieren und dokumentieren"
+  ],
+  "Browser": "Safari 17.2 / Chrome 120",
+  "OS": "iOS 17.2 / macOS 14.2",
+  "Gerät": "iPhone 13 Pro / MacBook Pro",
+  "Tests": [
+    {
+      "ID": "TC-001",
+      "Testfall": "Login-Funktionalität",
+      "Status": "✅ Pass",
+      "Bemerkung": "Login erfolgreich"
+    },
+    {
+      "ID": "TC-002",
+      "Testfall": "Kalenderansicht",
+      "Status": "❌ Fail",
+      "Bemerkung": "Startet bei 12:00 statt 08:00 (#3684)"
+    },
+    {
+      "ID": "TC-003",
+      "Testfall": "Kalender löschen",
+      "Status": "❌ Fail",
+      "Bemerkung": "Nicht möglich im Desktop (#3685)"
+    },
+    {
+      "ID": "TC-004",
+      "Testfall": "Wetter-Ansicht",
+      "Status": "❌ Fail",
+      "Bemerkung": "Visuelle Artefakte (#3685)"
+    },
+    {
+      "ID": "TC-005",
+      "Testfall": "Wetter-Tab Desktop",
+      "Status": "❌ Fail",
+      "Bemerkung": "Fehlt komplett (#3686)"
+    },
+    {
+      "ID": "TC-006",
+      "Testfall": "Einladungs-Status",
+      "Status": "❌ Fail",
+      "Bemerkung": "Account-Status Problem (#3687)"
+    },
+    {
+      "ID": "TC-007",
+      "Testfall": "Temperatur-Anzeige",
+      "Status": "❌ Fail",
+      "Bemerkung": "Überlappung in Wochenansicht (#3689)"
+    },
+    {
+      "ID": "TC-008",
+      "Testfall": "Controller löschen",
+      "Status": "❌ Fail",
+      "Bemerkung": "Nicht möglich (#3895)"
+    },
+    {
+      "ID": "TC-009",
+      "Testfall": "Offline-Login",
+      "Status": "❌ Fail",
+      "Bemerkung": "Blockiert im Flugmodus (Bug #9)"
+    }
+  ],
+  "GefundeneBugs": [
+    {
+      "BugID": "3684",
+      "Titel": "Kalender startet bei 12:00 statt 08:00",
+      "Schweregrad": "Mittel"
+    },
+    {
+      "BugID": "3685",
+      "Titel": "Kalender kann nicht gelöscht werden (Desktop)",
+      "Schweregrad": "Hoch"
+    },
+    {
+      "BugID": "3685",
+      "Titel": "Wetter-Ansicht visuelle Artefakte",
+      "Schweregrad": "Niedrig"
+    },
+    {
+      "BugID": "3686",
+      "Titel": "Wetter-Tab fehlt im Desktop",
+      "Schweregrad": "Hoch"
+    },
+    {
+      "BugID": "3687",
+      "Titel": "Einladungs-/Account-Status Problem",
+      "Schweregrad": "Kritisch"
+    },
+    {
+      "BugID": "3689",
+      "Titel": "Temperatur-Anzeige überlappt in Wochenansicht",
+      "Schweregrad": "Niedrig"
+    },
+    {
+      "BugID": "3895",
+      "Titel": "Controller können nicht gelöscht werden",
+      "Schweregrad": "Hoch"
+    },
+    {
+      "BugID": "TBD",
+      "Titel": "Offline-Login blockiert",
+      "Schweregrad": "Kritisch"
+    }
+  ],
+  "Statistik": {
+    "Gesamt": 9,
+    "Erfolgreich": 1,
+    "Fehlgeschlagen": 8,
+    "Übersprungen": 0,
+    "Erfolgsrate": 11
+  },
+  "Empfehlungen": [
+    "- Kritische Bugs (#3687, Offline-Login) sollten vor Release behoben werden",
+    "- Hohe Priorität: Kalender löschen (#3685), Wetter-Tab (#3686), Controller löschen (#3895)",
+    "- UI/UX-Verbesserungen: Kalender-Startzeit (#3684), Temperatur-Anzeige (#3689)"
+  ],
+  "Bemerkungen": "Version 1.3.5 Stage hat mehrere kritische Bugs, die vor dem Release behoben werden sollten. Besonders die Offline-Funktionalität und der Einladungs-Status sind problematisch."
+}
