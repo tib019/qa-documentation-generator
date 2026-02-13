@@ -1,0 +1,362 @@
+{
+  "Titel": "Hosenso QT@Stage – Test Case Katalog",
+  "Projekt": "Hosenso Cloud & Apps",
+  "Datum": "10.02.2026",
+  "Ersteller": "Tobias Buß",
+  "Übersicht": "Strukturierte TestCases für QT@Stage (Browser, iOS, Android, Windows, Box). Basis sind die bestehenden manuell geführten QT-Stage-Protokolle, jetzt mit IDs, Kategorien und Priorisierung.",
+  "Kategorien": [
+    {
+      "Nummer": "1",
+      "Titel": "Genereller Start & Plattformen",
+      "Beschreibung": "Startverhalten der App auf allen relevanten Plattformen. Fehlerfreiheit = keine Fehlermeldungen (App + SvcOps), kein Absturz.",
+      "TestCases": [
+        {
+          "ID": "TC-START-001",
+          "Szenario": "Start der App auf Box",
+          "ErwartetesVerhalten": "Die App startet auf der Box ohne Fehlermeldung und ohne Absturz.",
+          "Priorität": "Hoch"
+        },
+        {
+          "ID": "TC-START-002",
+          "Szenario": "Start der App in der Cloud (Browser)",
+          "ErwartetesVerhalten": "Die App startet in der Cloud-Umgebung (Browser) ohne Fehlermeldung und ohne Absturz.",
+          "Priorität": "Hoch"
+        },
+        {
+          "ID": "TC-START-003",
+          "Szenario": "Start der App iOS",
+          "ErwartetesVerhalten": "Die iOS-App startet fehlerfrei und zeigt den erwarteten Startscreen.",
+          "Priorität": "Hoch"
+        },
+        {
+          "ID": "TC-START-004",
+          "Szenario": "Start der App Android",
+          "ErwartetesVerhalten": "Die Android-App startet fehlerfrei und zeigt den erwarteten Startscreen.",
+          "Priorität": "Hoch"
+        },
+        {
+          "ID": "TC-START-005",
+          "Szenario": "Start der App Windows Desktop",
+          "ErwartetesVerhalten": "Die Windows-Desktop-App startet fehlerfrei und zeigt den erwarteten Startscreen.",
+          "Priorität": "Mittel"
+        },
+        {
+          "ID": "TC-START-006",
+          "Szenario": "Start der App macOS",
+          "ErwartetesVerhalten": "Die App startet unter macOS fehlerfrei und zeigt den erwarteten Startscreen.",
+          "Priorität": "Mittel"
+        }
+      ]
+    },
+    {
+      "Nummer": "2",
+      "Titel": "Authentifizierung – /authentication/challenge",
+      "Beschreibung": "E-Mail-Eingabe, Validierung und Weiterleitung zur weiteren Authentifizierung.",
+      "TestCases": [
+        {
+          "ID": "TC-AUTH-CHAL-001",
+          "Szenario": "Hosenso Logo wird angezeigt",
+          "ErwartetesVerhalten": "Auf /authentication/challenge wird das Hosenso-Logo auf allen Plattformen (Box, Cloud, Mobile) korrekt angezeigt (CDN funktioniert).",
+          "Priorität": "Mittel"
+        },
+        {
+          "ID": "TC-AUTH-CHAL-002",
+          "Szenario": "Leere E-Mail-Adresse",
+          "ErwartetesVerhalten": "Beim Absenden mit leerer E-Mail-Adresse erscheint die Meldung: \"Die E-Mail-Adresse oder der Benutzername darf nicht leer sein.\"",
+          "Priorität": "Hoch"
+        },
+        {
+          "ID": "TC-AUTH-CHAL-003",
+          "Szenario": "Ungültige/lang E-Mail-Adresse",
+          "ErwartetesVerhalten": "Eine offensichtlich ungültige oder zu lange E-Mail-Adresse (z.B. info@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaangelobreuer.de) führt auf allen Geräten zu einer klaren Fehlermeldung / Markierung als ungültig.",
+          "Priorität": "Hoch"
+        },
+        {
+          "ID": "TC-AUTH-CHAL-004",
+          "Szenario": "Gültige E-Mail-Adresse",
+          "ErwartetesVerhalten": "Bei gültiger E-Mail-Adresse erfolgt die Weiterleitung auf den nächsten Schritt (Passworteingabe, Registrierung oder Passwortvergabe).",
+          "Priorität": "Hoch"
+        },
+        {
+          "ID": "TC-AUTH-CHAL-005",
+          "Szenario": "Vorbelegung mit alter E-Mail-Adresse",
+          "ErwartetesVerhalten": "Die zuletzt verwendete E-Mail-Adresse wird korrekt (inkl. Groß-/Kleinschreibung) im Eingabefeld vorbelegt.",
+          "Priorität": "Mittel"
+        }
+      ]
+    },
+    {
+      "Nummer": "3",
+      "Titel": "Authentifizierung – /authentication/sign-up",
+      "Beschreibung": "Registrierungsmaske und Passwort-Policy.",
+      "TestCases": [
+        {
+          "ID": "TC-AUTH-SU-001",
+          "Szenario": "Hosenso Logo sichtbar",
+          "ErwartetesVerhalten": "Das Logo ist in der Registrierungsmaske sichtbar (CDN funktioniert).",
+          "Priorität": "Niedrig"
+        },
+        {
+          "ID": "TC-AUTH-SU-002",
+          "Szenario": "E-Mail aus Challenge wird übernommen",
+          "ErwartetesVerhalten": "Die im Challenge-Schritt eingegebene E-Mail-Adresse ist korrekt und mit gleicher Groß-/Kleinschreibung vorbelegt.",
+          "Priorität": "Mittel"
+        },
+        {
+          "ID": "TC-AUTH-SU-003",
+          "Szenario": "F5 / Reload leitet zurück zur Challenge",
+          "ErwartetesVerhalten": "Ein Reload der Seite führt zurück auf /authentication/challenge und bricht die Registrierung sauber ab.",
+          "Priorität": "Mittel"
+        },
+        {
+          "ID": "TC-AUTH-SU-004",
+          "Szenario": "Passwort-Policy – leeres Passwort",
+          "ErwartetesVerhalten": "Ein leeres Passwort wird mit einer klaren Fehlermeldung abgelehnt.",
+          "Priorität": "Hoch"
+        },
+        {
+          "ID": "TC-AUTH-SU-005",
+          "Szenario": "Passwort-Policy – zu kurz (<8 Zeichen)",
+          "ErwartetesVerhalten": "Passwörter mit weniger als acht Zeichen werden abgelehnt.",
+          "Priorität": "Hoch"
+        },
+        {
+          "ID": "TC-AUTH-SU-006",
+          "Szenario": "Passwort-Policy – fehlende Komponente",
+          "ErwartetesVerhalten": "Passwörter, denen Kleinbuchstabe, Großbuchstabe, Zahl, Symbol oder vier einzigartige Zeichen fehlen, werden jeweils mit einer passenden Meldung abgelehnt.",
+          "Priorität": "Hoch"
+        },
+        {
+          "ID": "TC-AUTH-SU-007",
+          "Szenario": "Passwort anzeigen/verstecken",
+          "ErwartetesVerhalten": "Der Anzeigen/Verstecken-Schalter funktioniert korrekt und beeinflusst nur die Darstellung, nicht den Wert.",
+          "Priorität": "Mittel"
+        },
+        {
+          "ID": "TC-AUTH-SU-008",
+          "Szenario": "Datenschutzerklärung-Link",
+          "ErwartetesVerhalten": "Klick auf den Link \"Datenschutzerklärung\" öffnet einen Dialog mit den Inhalten.",
+          "Priorität": "Mittel"
+        },
+        {
+          "ID": "TC-AUTH-SU-009",
+          "Szenario": "Registrieren ohne akzeptierte Datenschutzerklärung",
+          "ErwartetesVerhalten": "Ohne Zustimmung zur Datenschutzerklärung zeigt das System eine verständliche Fehlermeldung und verhindert die Registrierung.",
+          "Priorität": "Hoch"
+        }
+      ]
+    },
+    {
+      "Nummer": "4",
+      "Titel": "Authentifizierung – /authentication/authenticate & \"Angemeldet bleiben\"",
+      "Beschreibung": "Login mit bestehendem Account, Anzeige von E-Mail, Passwort, Tabs und vertrauenswürdigen Geräten.",
+      "TestCases": [
+        {
+          "ID": "TC-AUTH-AUTH-001",
+          "Szenario": "Hosenso Logo sichtbar",
+          "ErwartetesVerhalten": "Auf /authentication/authenticate wird das Hosenso-Logo auf allen relevanten Plattformen korrekt angezeigt.",
+          "Priorität": "Niedrig"
+        },
+        {
+          "ID": "TC-AUTH-AUTH-002",
+          "Szenario": "E-Mail-Anzeige inkl. Groß-/Kleinschreibung",
+          "ErwartetesVerhalten": "Die zuvor genutzte E-Mail-Adresse wird korrekt (inkl. Groß-/Kleinschreibung) angezeigt.",
+          "Priorität": "Mittel"
+        },
+        {
+          "ID": "TC-AUTH-AUTH-003",
+          "Szenario": "Leeres Passwort",
+          "ErwartetesVerhalten": "Ein leeres Passwort führt zu einer klaren Fehlermeldung.",
+          "Priorität": "Hoch"
+        },
+        {
+          "ID": "TC-AUTH-AUTH-004",
+          "Szenario": "Ungültiges Passwort",
+          "ErwartetesVerhalten": "Ein falsches Passwort führt zu einer verständlichen Fehlermeldung, ohne Tickets oder Sessions kaputt zu machen.",
+          "Priorität": "Hoch"
+        },
+        {
+          "ID": "TC-AUTH-AUTH-005",
+          "Szenario": "Passwort anzeigen/verstecken",
+          "ErwartetesVerhalten": "Der Anzeigen/Verstecken-Schalter funktioniert auf allen Plattformen (inkl. Desktop) korrekt.",
+          "Priorität": "Mittel"
+        },
+        {
+          "ID": "TC-AUTH-AUTH-006",
+          "Szenario": "Mehrfach falsches Passwort",
+          "ErwartetesVerhalten": "Mehrfaches falsches Passwort führt nicht zum Verlust des Tickets / der Session.",
+          "Priorität": "Mittel"
+        },
+        {
+          "ID": "TC-AUTH-AUTH-007",
+          "Szenario": "\"Angemeldet bleiben\" – zweiter normaler Tab",
+          "ErwartetesVerhalten": "Ist \"Angemeldet bleiben\" aktiv, ist ein zweiter normaler Tab derselben Session ebenfalls angemeldet.",
+          "Priorität": "Mittel"
+        },
+        {
+          "ID": "TC-AUTH-AUTH-008",
+          "Szenario": "\"Angemeldet bleiben\" inaktiv – zweiter Tab",
+          "ErwartetesVerhalten": "Ist \"Angemeldet bleiben\" inaktiv, ist ein zweiter Tab nicht automatisch angemeldet.",
+          "Priorität": "Mittel"
+        },
+        {
+          "ID": "TC-AUTH-AUTH-009",
+          "Szenario": "Privater Tab",
+          "ErwartetesVerhalten": "Ein privater Tab ist nicht automatisch angemeldet, wenn im normalen Tab angemeldet wurde.",
+          "Priorität": "Mittel"
+        },
+        {
+          "ID": "TC-AUTH-AUTH-010",
+          "Szenario": "\"Nicht Du?\"",
+          "ErwartetesVerhalten": "Klick auf \"Nicht Du?\" führt zurück zur E-Mail-Eingabe.",
+          "Priorität": "Niedrig"
+        },
+        {
+          "ID": "TC-AUTH-AUTH-011",
+          "Szenario": "Vertrauenswürdige Geräte – sofortiger Entzug",
+          "ErwartetesVerhalten": "Entfernt der User ein zuvor als vertrauenswürdig markiertes Gerät, verliert dieses sofort den Zugriff.",
+          "Priorität": "Hoch"
+        },
+        {
+          "ID": "TC-AUTH-AUTH-012",
+          "Szenario": "Vertrauenswürdige Geräte – keine Push Notifications mehr",
+          "ErwartetesVerhalten": "Nach Entfernen als vertrauenswürdiges Gerät erhält das Gerät keine Push Notifications mehr.",
+          "Priorität": "Hoch"
+        }
+      ]
+    },
+    {
+      "Nummer": "5",
+      "Titel": "Kalender – Grundfunktionen & Ansichten",
+      "Beschreibung": "Persönlicher Kalender, neue Kalender, Löschen, Ansichten und bekannte QT-Bugs.",
+      "TestCases": [
+        {
+          "ID": "TC-CAL-BASIC-001",
+          "Szenario": "Persönlichen Kalender aktivieren/deaktivieren",
+          "ErwartetesVerhalten": "Der persönliche Kalender lässt sich aktivieren/deaktivieren, Termine erscheinen/verschwinden entsprechend in der Ansicht.",
+          "Priorität": "Mittel"
+        },
+        {
+          "ID": "TC-CAL-BASIC-002",
+          "Szenario": "Neuen Kalender anlegen",
+          "ErwartetesVerhalten": "Ein neuer Kalender kann mit Name und Farbe angelegt werden und erscheint in der Liste.",
+          "Priorität": "Mittel"
+        },
+        {
+          "ID": "TC-CAL-DEL-001",
+          "Szenario": "Kalender löschen im Desktop-Browser",
+          "ErwartetesVerhalten": "Ein angelegter Kalender lässt sich im Desktop-Browser löschen (aktueller Bug: siehe Ticket 3888).",
+          "Priorität": "Hoch"
+        },
+        {
+          "ID": "TC-CAL-VIEW-001",
+          "Szenario": "Ansicht \"Tag\" – korrekte Startzeit",
+          "ErwartetesVerhalten": "Die Tagesansicht startet standardmäßig so, dass Vormittagstermine sichtbar sind (z.B. ab 08:00 Uhr), nicht immer ab 12:00 Uhr (Bug 3884).",
+          "Priorität": "Hoch"
+        },
+        {
+          "ID": "TC-CAL-VIEW-002",
+          "Szenario": "Ansicht \"Drei Tage\"",
+          "ErwartetesVerhalten": "Die Ansichtsoption \"Drei Tage\" zeigt den aktuellen Tag plus die nächsten zwei Tage korrekt an.",
+          "Priorität": "Mittel"
+        },
+        {
+          "ID": "TC-CAL-VIEW-003",
+          "Szenario": "Ansicht \"Woche\" – Temperaturdarstellung",
+          "ErwartetesVerhalten": "In der Wochenansicht überlappen Temperaturen und UI-Elemente nicht (Bug 3889).",
+          "Priorität": "Mittel"
+        },
+        {
+          "ID": "TC-CAL-VIEW-004",
+          "Szenario": "Wechsel zwischen Tag/Monat/Jahr inkl. Scrollen (Zeitreise)",
+          "ErwartetesVerhalten": "Wechsel der Ansichten und horizontales Scrollen (inkl. Jahre in der Vergangenheit) führt nicht dazu, dass Tage dauerhaft verschwinden oder Ansichten kaputt sind.",
+          "Priorität": "Hoch"
+        },
+        {
+          "ID": "TC-CAL-VIEW-005",
+          "Szenario": "Checkbox \"Alle\"",
+          "ErwartetesVerhalten": "Checkbox \"Alle\" hakelt alle Kalender an/ab und die Anzeige im Kalender passt sich entsprechend an.",
+          "Priorität": "Mittel"
+        }
+      ]
+    },
+    {
+      "Nummer": "6",
+      "Titel": "Wetter",
+      "Beschreibung": "Wetter-Reiter, heutige und zukünftige Werte, visuelle Artefakte.",
+      "TestCases": [
+        {
+          "ID": "TC-WEATHER-001",
+          "Szenario": "Wetter-Reiter im Desktop-Browser sichtbar",
+          "ErwartetesVerhalten": "Der Reiter \"Wetter\" ist im Desktop-Browser vorhanden (Bug 3886).",
+          "Priorität": "Hoch"
+        },
+        {
+          "ID": "TC-WEATHER-002",
+          "Szenario": "Anzeige aktuelles Wetter und Temperatur",
+          "ErwartetesVerhalten": "Für den aktuellen Standort werden Wetter und Temperatur des aktuellen Tages korrekt angezeigt.",
+          "Priorität": "Mittel"
+        },
+        {
+          "ID": "TC-WEATHER-003",
+          "Szenario": "Verlauf heute und 14-Tage-Ansicht ohne Artefakte",
+          "ErwartetesVerhalten": "Die mittlere (Tagesverlauf) und untere Box (14 Tage) werden ohne visuelle Artefakte oder Flackern angezeigt (Bug 3885 Android).",
+          "Priorität": "Mittel"
+        }
+      ]
+    },
+    {
+      "Nummer": "7",
+      "Titel": "Offline-Szenarien",
+      "Beschreibung": "App- und Box-Verhalten bei unterschiedlichen Offline-Zuständen.",
+      "TestCases": [
+        {
+          "ID": "TC-OFFLINE-001",
+          "Szenario": "App im Flugmodus starten",
+          "ErwartetesVerhalten": "Die App startet normal und zeigt beim Versuch der Anmeldung eine klare Meldung, dass das Gerät nicht mit dem Internet verbunden ist.",
+          "Priorität": "Hoch"
+        },
+        {
+          "ID": "TC-OFFLINE-002",
+          "Szenario": "Box offline (Router offline, App im WLAN)",
+          "ErwartetesVerhalten": "Die App erkennt, dass die Box/Backend nicht erreichbar ist, zeigt passende Fehlermeldungen und Timeouts, ohne abzustürzen.",
+          "Priorität": "Hoch"
+        },
+        {
+          "ID": "TC-OFFLINE-003",
+          "Szenario": "Router \"online\" ohne Daten",
+          "ErwartetesVerhalten": "Die App reagiert auf Timeouts/Fehler korrekt, zeigt eindeutige Fehlermeldungen und blockiert den User nicht dauerhaft.",
+          "Priorität": "Hoch"
+        }
+      ]
+    }
+  ],
+  "TechnischeUmsetzung": "Die TestCases werden als Markdown-Dokument generiert (Template: TestCases) und dienen als Referenzkatalog. Im TestProtokoll (Template: TestProtokoll) werden die TestCase-IDs mit Status (✅/⚠️/❌/nicht getestet) referenziert.",
+  "TestDurchführung": "Für jede QT-Stage-Session wird ein separates TestProtokoll-JSON erstellt, das auf diese TestCase-IDs verweist und den tatsächlichen Status dokumentiert.",
+  "Priorisierung": {
+    "Kritisch": [
+      "TC-AUTH-CHAL-002",
+      "TC-AUTH-SU-004",
+      "TC-AUTH-SU-005",
+      "TC-AUTH-SU-006",
+      "TC-CAL-DEL-001",
+      "TC-CAL-VIEW-001",
+      "TC-OFFLINE-001",
+      "TC-OFFLINE-002",
+      "TC-OFFLINE-003"
+    ],
+    "Wichtig": [
+      "TC-START-001",
+      "TC-START-002",
+      "TC-START-003",
+      "TC-CAL-VIEW-003",
+      "TC-WEATHER-001",
+      "TC-WEATHER-003"
+    ]
+  },
+  "Erfolgskriterien": [
+    "Alle kritischen TestCases (Priorität = Hoch/Kritisch) sind in mindestens einer QT-Stage-Session grün (✅).",
+    "Alle Bugs mit verknüpften Tickets (z.B. 3884, 3885, 3886, 3888, 3889, 3895, 3896) sind im Backlog erfasst und haben zugehörige TestCases.",
+    "Für jede neue App-Version existiert ein TestProtokoll, das eine definierte Teilmenge dieser TestCases abdeckt."
+  ]
+}

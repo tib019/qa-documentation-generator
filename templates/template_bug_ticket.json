@@ -1,0 +1,33 @@
+{
+  "Titel": "",
+  "BugID": "",
+  "Datum": "",
+  "Ersteller": "QA Team",
+  "Schweregrad": "Mittel|Hoch|Kritisch|Niedrig",
+  "Status": "Offen|In Bearbeitung|Gelöst|Geschlossen",
+  "Zusammenfassung": "",
+  "Beschreibung": "",
+  "Plattformen": [
+    "- "
+  ],
+  "Reproduktionsschritte": [
+    "",
+    "",
+    ""
+  ],
+  "ErwartetesVerhalten": "",
+  "TatsächlichesVerhalten": "",
+  "Screenshots": [
+    "- "
+  ],
+  "TechnischeDetails": {
+    "Version": "",
+    "OS": "",
+    "Gerät": ""
+  },
+  "MöglicheUrsache": "",
+  "Lösungsvorschlag": "",
+  "VerwandteTickets": [
+    "- "
+  ]
+}

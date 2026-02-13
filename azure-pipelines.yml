@@ -1,0 +1,152 @@
+# Azure DevOps Pipeline für QA-Dokumenten-Generator
+# Automatische Generierung von QA-Dokumentation bei Git-Commits
+
+trigger:
+  branches:
+    include:
+      - main
+      - develop
+  paths:
+    include:
+      - 'data/*.json'
+      - 'examples/*.json'
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  outputPath: '$(Build.ArtifactStagingDirectory)/generated-docs'
+
+stages:
+  - stage: GenerateDocumentation
+    displayName: 'Generate QA Documentation'
+    jobs:
+      - job: GenerateDocs
+        displayName: 'Generate Documents from JSON'
+        steps:
+          - checkout: self
+            displayName: 'Checkout Repository'
+
+          - task: PowerShell@2
+            displayName: 'Set Execution Policy'
+            inputs:
+              targetType: 'inline'
+              script: |
+                Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
+                Write-Host "Execution policy set successfully"
+
+          - task: PowerShell@2
+            displayName: 'Generate Bug Tickets'
+            inputs:
+              targetType: 'inline'
+              script: |
+                Write-Host "Generating bug tickets from examples..."
+                $jsonFiles = Get-ChildItem -Path "examples" -Filter "beispiel_bug_ticket.json"
+                
+                foreach ($file in $jsonFiles) {
+                  Write-Host "Processing: $($file.Name)"
+                  .\Generate-QADocument.ps1 -ConfigFile $file.FullName -Template "BugTicket" -OutputPath "$(outputPath)\$($file.BaseName).md"
+                }
+                
+                Write-Host "Bug tickets generated successfully"
+
+          - task: PowerShell@2
+            displayName: 'Generate Test Protocols'
+            inputs:
+              targetType: 'inline'
+              script: |
+                Write-Host "Generating test protocols from examples..."
+                $jsonFiles = Get-ChildItem -Path "examples" -Filter "beispiel_test_protokoll.json"
+                
+                foreach ($file in $jsonFiles) {
+                  Write-Host "Processing: $($file.Name)"
+                  .\Generate-QADocument.ps1 -ConfigFile $file.FullName -Template "TestProtokoll" -OutputPath "$(outputPath)\$($file.BaseName).md"
+                }
+                
+                Write-Host "Test protocols generated successfully"
+
+          - task: PowerShell@2
+            displayName: 'Generate Summary Report'
+            inputs:
+              targetType: 'inline'
+              script: |
+                Write-Host "Generating summary report..."
+                $generatedFiles = Get-ChildItem -Path "$(outputPath)" -Filter "*.md"
+                $summary = @"
+                # QA Documentation Generation Report
+                
+                **Build ID:** $(Build.BuildId)
+                **Build Number:** $(Build.BuildNumber)
+                **Date:** $(Get-Date -Format "yyyy-MM-dd HH:mm:ss")
+                **Branch:** $(Build.SourceBranchName)
+                **Commit:** $(Build.SourceVersion)
+                
+                ## Generated Documents
+                
+                Total documents generated: $($generatedFiles.Count)
+                
+                | Document | Size | Type |
+                |----------|------|------|
+                "@
+                
+                foreach ($file in $generatedFiles) {
+                  $summary += "`n| $($file.Name) | $([math]::Round($file.Length / 1KB, 2)) KB | Markdown |"
+                }
+                
+                $summary | Out-File -FilePath "$(outputPath)\SUMMARY.md" -Encoding UTF8
+                Write-Host "Summary report generated"
+
+          - task: PublishBuildArtifacts@1
+            displayName: 'Publish Generated Documents'
+            inputs:
+              PathtoPublish: '$(outputPath)'
+              ArtifactName: 'qa-documentation'
+              publishLocation: 'Container'
+
+          - task: PowerShell@2
+            displayName: 'Display Generation Statistics'
+            inputs:
+              targetType: 'inline'
+              script: |
+                Write-Host "========================================="
+                Write-Host "QA Documentation Generation Complete"
+                Write-Host "========================================="
+                $files = Get-ChildItem -Path "$(outputPath)" -Filter "*.md"
+                Write-Host "Total documents: $($files.Count)"
+                Write-Host "Total size: $([math]::Round(($files | Measure-Object -Property Length -Sum).Sum / 1KB, 2)) KB"
+                Write-Host "========================================="
+
+  - stage: UploadToWiki
+    displayName: 'Upload to Azure DevOps Wiki (Optional)'
+    dependsOn: GenerateDocumentation
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+    jobs:
+      - job: WikiUpload
+        displayName: 'Upload Documents to Wiki'
+        steps:
+          - checkout: self
+            displayName: 'Checkout Repository'
+
+          - task: DownloadBuildArtifacts@0
+            displayName: 'Download Generated Documents'
+            inputs:
+              buildType: 'current'
+              downloadType: 'single'
+              artifactName: 'qa-documentation'
+              downloadPath: '$(System.ArtifactsDirectory)'
+
+          - task: PowerShell@2
+            displayName: 'Prepare Wiki Upload'
+            inputs:
+              targetType: 'inline'
+              script: |
+                Write-Host "Preparing documents for Wiki upload..."
+                Write-Host "Note: Wiki upload requires Azure DevOps Wiki Git repository configured"
+                Write-Host "Documents are available in artifacts for manual upload"
+                
+                # Beispiel für Wiki-Upload (erfordert Wiki Git Repository)
+                # git clone https://dev.azure.com/YOUR_ORG/YOUR_PROJECT/_git/YOUR_PROJECT.wiki
+                # Copy-Item "$(System.ArtifactsDirectory)/qa-documentation/*.md" -Destination "./YOUR_PROJECT.wiki/"
+                # git add .
+                # git commit -m "Auto-generated QA documentation from Build $(Build.BuildNumber)"
+                # git push
