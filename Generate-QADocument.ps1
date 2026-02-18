@@ -615,31 +615,26 @@ function New-QTStageProtokollDocument {
         }
     }
     
-    $markdown = @"
-# $($Data.Titel)
-
----
-
-## 📊 Metadaten
-
-**Tester:** $($Data.Tester)  
-**Service Account ID:** $($Data.ServiceAccountID)  
-**Startzeit:** $($Data.Startzeit)  
-**Endzeit:** $($Data.Endzeit)  
-**Datum:** $($Data.Datum)  
-**Version:** $($Data.Version)  
-
----
-
-## 📱 Geräte-IDs
-
-$($Data.GeräteIDs.PSObject.Properties | ForEach-Object { "**$($_.Name):** $($_.Value)  " } | Out-String)
-
----
-
-## ✅ Test-Kategorien
-
-"@
+    # Markdown schrittweise aufbauen (vermeidet Here-String Parsing-Probleme)
+    $markdown = "# $($Data.Titel)`n`n"
+    $markdown += "---`n`n"
+    $markdown += "## 📊 Metadaten`n`n"
+    $markdown += "**Tester:** $($Data.Tester)  `n"
+    $markdown += "**Service Account ID:** $($Data.ServiceAccountID)  `n"
+    $markdown += "**Startzeit:** $($Data.Startzeit)  `n"
+    $markdown += "**Endzeit:** $($Data.Endzeit)  `n"
+    $markdown += "**Datum:** $($Data.Datum)  `n"
+    $markdown += "**Version:** $($Data.Version)  `n`n"
+    $markdown += "---`n`n"
+    $markdown += "## 📱 Geräte-IDs`n`n"
+    
+    # Geräte-IDs hinzufügen
+    foreach ($prop in $Data.GeräteIDs.PSObject.Properties) {
+        $markdown += "**$($prop.Name):** $($prop.Value)  `n"
+    }
+    
+    $markdown += "`n---`n`n"
+    $markdown += "## ✅ Test-Kategorien`n`n"
     
     # Test-Kategorien durchgehen
     foreach ($kategorie in $Data.TestKategorien) {
