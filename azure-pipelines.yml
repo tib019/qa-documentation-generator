@@ -20,6 +20,11 @@ variables:
   adoOrganization: 'YOUR_ORG'
   adoProject: 'YOUR_PROJECT'
   adoWiki: 'YOUR_PROJECT.wiki'
+  # Die Unterordner-Struktur aus den Artifacts wird ins Wiki gespiegelt:
+  #   <wikiBasePath>/
+  #     Bug-Tickets/
+  #     Test-Protokolle/
+  #     Reports/
   wikiBasePath: '/QA-Documentation'
 
 stages:
@@ -46,11 +51,12 @@ stages:
               targetType: 'inline'
               script: |
                 Write-Host "Generating bug tickets from examples..."
+                New-Item -ItemType Directory -Path "$(outputPath)\Bug-Tickets" -Force | Out-Null
                 $jsonFiles = Get-ChildItem -Path "examples" -Filter "beispiel_bug_ticket.json"
                 
                 foreach ($file in $jsonFiles) {
                   Write-Host "Processing: $($file.Name)"
-                  .\Generate-QADocument.ps1 -ConfigFile $file.FullName -Template "BugTicket" -OutputPath "$(outputPath)\$($file.BaseName).md" -NoPrompt
+                  .\Generate-QADocument.ps1 -ConfigFile $file.FullName -Template "BugTicket" -OutputPath "$(outputPath)\Bug-Tickets\$($file.BaseName).md" -NoPrompt
                 }
                 
                 Write-Host "Bug tickets generated successfully"
@@ -61,11 +67,12 @@ stages:
               targetType: 'inline'
               script: |
                 Write-Host "Generating test protocols from examples..."
+                New-Item -ItemType Directory -Path "$(outputPath)\Test-Protokolle" -Force | Out-Null
                 $jsonFiles = Get-ChildItem -Path "examples" -Filter "beispiel_test_protokoll.json"
                 
                 foreach ($file in $jsonFiles) {
                   Write-Host "Processing: $($file.Name)"
-                  .\Generate-QADocument.ps1 -ConfigFile $file.FullName -Template "TestProtokoll" -OutputPath "$(outputPath)\$($file.BaseName).md" -NoPrompt
+                  .\Generate-QADocument.ps1 -ConfigFile $file.FullName -Template "TestProtokoll" -OutputPath "$(outputPath)\Test-Protokolle\$($file.BaseName).md" -NoPrompt
                 }
                 
                 Write-Host "Test protocols generated successfully"
@@ -76,7 +83,8 @@ stages:
               targetType: 'inline'
               script: |
                 Write-Host "Generating summary report..."
-                $generatedFiles = Get-ChildItem -Path "$(outputPath)" -Filter "*.md"
+                New-Item -ItemType Directory -Path "$(outputPath)\Reports" -Force | Out-Null
+                $generatedFiles = Get-ChildItem -Path "$(outputPath)" -Filter "*.md" -Recurse
                 $summary = @"
                 # QA Documentation Generation Report
                 
@@ -95,10 +103,11 @@ stages:
                 "@
                 
                 foreach ($file in $generatedFiles) {
-                  $summary += "`n| $($file.Name) | $([math]::Round($file.Length / 1KB, 2)) KB | Markdown |"
+                  $rel = $file.FullName.Replace("$(outputPath)\", "")
+                  $summary += "`n| $rel | $([math]::Round($file.Length / 1KB, 2)) KB | Markdown |"
                 }
                 
-                $summary | Out-File -FilePath "$(outputPath)\SUMMARY.md" -Encoding UTF8
+                $summary | Out-File -FilePath "$(outputPath)\Reports\SUMMARY.md" -Encoding UTF8
                 Write-Host "Summary report generated"
 
           - task: PublishBuildArtifacts@1

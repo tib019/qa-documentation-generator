@@ -142,8 +142,14 @@ In deiner Pipeline unter **Variables** hinzufügen:
 
 Die Stage `UploadToWiki` in `azure-pipelines.yml` lädt die Artefakte nach der Generierung ins Wiki hoch:
 
-- Quelle: `$(System.ArtifactsDirectory)/qa-documentation/*.md` (rekursiv)
-- Ziel: `wikiBasePath` im Azure DevOps Wiki
+- **Quelle:** `$(System.ArtifactsDirectory)/qa-documentation` (rekursiv)
+- **Ziel:** `wikiBasePath` im Azure DevOps Wiki (Unterordner werden gespiegelt)
+
+**Beispiel Struktur im Wiki:**
+
+- `<wikiBasePath>/Bug-Tickets/...`
+- `<wikiBasePath>/Test-Protokolle/...`
+- `<wikiBasePath>/Reports/SUMMARY`
 
 Du musst dafür nur sicherstellen, dass `ADO_PAT` gesetzt ist.
 
