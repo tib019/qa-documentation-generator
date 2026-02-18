@@ -632,9 +632,49 @@ function New-QTStageProtokollDocument {
     $markdown += "---`n`n"
     $markdown += "## 📱 Geräte-IDs`n`n"
     
-    # Geräte-IDs hinzufügen
-    foreach ($prop in $Data.GeräteIDs.PSObject.Properties) {
-        $markdown += "**$($prop.Name):** $($prop.Value)  `n"
+    # Geräte-IDs hinzufügen (unterstützt alte und neue Struktur)
+    if ($Data.GeräteIDs.BoxIDs) {
+        # Neue Struktur mit BoxIDs, DesktopGeräte, MobileGeräte
+        if ($Data.GeräteIDs.BoxIDs) {
+            $markdown += "### 🔌 Box IDs`n`n"
+            foreach ($boxId in $Data.GeräteIDs.BoxIDs) {
+                if ($boxId -and $boxId -ne "_________________________________________________________") {
+                    $markdown += "* [$boxId]`n"
+                }
+            }
+            $markdown += "`n"
+        }
+        if ($Data.GeräteIDs.DesktopGeräte) {
+            $markdown += "### 🖥️ Desktop-Geräte`n`n"
+            foreach ($desktop in $Data.GeräteIDs.DesktopGeräte) {
+                if ($desktop.Gerätename) {
+                    $markdown += "**$($desktop.Gerätename)**`n`n"
+                }
+                if ($desktop.Prozessor) {
+                    $markdown += "* Prozessor: $($desktop.Prozessor)`n"
+                }
+                if ($desktop.RAM) {
+                    $markdown += "* RAM: $($desktop.RAM)`n"
+                }
+                $markdown += "`n"
+            }
+        }
+        if ($Data.GeräteIDs.MobileGeräte) {
+            $markdown += "### 📱 Mobile Geräte`n`n"
+            foreach ($mobile in $Data.GeräteIDs.MobileGeräte) {
+                $markdown += "* **$($mobile.Name)**"
+                if ($mobile.OS) {
+                    $markdown += " - $($mobile.OS)"
+                }
+                $markdown += "`n"
+            }
+            $markdown += "`n"
+        }
+    } else {
+        # Alte Struktur (flache Properties)
+        foreach ($prop in $Data.GeräteIDs.PSObject.Properties) {
+            $markdown += "**$($prop.Name):** $($prop.Value)  `n"
+        }
     }
     
     $markdown += "`n---`n`n"
@@ -642,7 +682,14 @@ function New-QTStageProtokollDocument {
     
     # Test-Kategorien durchgehen
     foreach ($kategorie in $Data.TestKategorien) {
-        $markdown += "`n### $($kategorie.Kategorie)`n`n"
+        # Unterstützt beide Formate: Kategorie (alt) und Name (neu)
+        $katName = if ($kategorie.Name) { $kategorie.Name } else { $kategorie.Kategorie }
+        $markdown += "`n### $katName`n`n"
+        
+        # UI-Screen (neu)
+        if ($kategorie.UIScreen) {
+            $markdown += "**UI:** ``$($kategorie.UIScreen)```n`n"
+        }
         
         # UI-Screens (falls vorhanden)
         if ($kategorie.UIScreens) {
@@ -653,7 +700,8 @@ function New-QTStageProtokollDocument {
                 
                 foreach ($test in $screen.Tests) {
                     $symbol = Get-StatusSymbol $test.Status
-                    $markdown += "| $($test.Test) | $symbol $($test.Status) | $($test.Bemerkung) |`n"
+                    $testName = if ($test.Testfall) { $test.Testfall } else { $test.Test }
+                    $markdown += "| $testName | $symbol $($test.Status) | $($test.Bemerkung) |`n"
                 }
                 $markdown += "`n"
             }
@@ -666,7 +714,8 @@ function New-QTStageProtokollDocument {
             
             foreach ($test in $kategorie.Tests) {
                 $symbol = Get-StatusSymbol $test.Status
-                $markdown += "| $($test.Test) | $symbol $($test.Status) | $($test.Bemerkung) |`n"
+                $testName = if ($test.Testfall) { $test.Testfall } else { $test.Test }
+                $markdown += "| $testName | $symbol $($test.Status) | $($test.Bemerkung) |`n"
             }
             $markdown += "`n"
         }
@@ -684,20 +733,31 @@ function New-QTStageProtokollDocument {
             
             foreach ($test in $plattform.Tests) {
                 $statusSymbol = Get-StatusSymbol $test.Status
-                $markdown += "| $($test.Test) | $statusSymbol $($test.Status) | $($test.Bemerkung) |`n"
+                $testName = if ($test.Testfall) { $test.Testfall } else { $test.Test }
+                $markdown += "| $testName | $statusSymbol $($test.Status) | $($test.Bemerkung) |`n"
             }
             $markdown += "`n"
         }
     }
     
-    # Test-Accounts
+    # Test-Accounts (unterstützt alte und neue Struktur)
     if ($Data.TestAccounts -and $Data.TestAccounts.Count -gt 0) {
         $markdown += "`n---`n`n## 👤 Test-Accounts`n`n"
-        $markdown += "| Account | Rolle | Verwendung |`n"
-        $markdown += "|---------|-------|------------|`n"
         
-        foreach ($account in $Data.TestAccounts) {
-            $markdown += "| $($account.Account) | $($account.Rolle) | $($account.Verwendung) |`n"
+        # Prüfe ob es Objekte (alt) oder Strings (neu) sind
+        $firstAccount = $Data.TestAccounts[0]
+        if ($firstAccount -is [string]) {
+            # Neue Struktur: Array von Strings
+            foreach ($account in $Data.TestAccounts) {
+                $markdown += "* $account`n"
+            }
+        } else {
+            # Alte Struktur: Array von Objekten
+            $markdown += "| Account | Rolle | Verwendung |`n"
+            $markdown += "|---------|-------|------------|`n"
+            foreach ($account in $Data.TestAccounts) {
+                $markdown += "| $($account.Account) | $($account.Rolle) | $($account.Verwendung) |`n"
+            }
         }
         $markdown += "`n"
     }
