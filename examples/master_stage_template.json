@@ -1,0 +1,2549 @@
+{
+  "_comment": "MASTER-Template für QT@Stage Testprotokoll - ALLE 272 Tests - Für jede neue Version kopieren und nur Metadaten/Ergebnisse ändern",
+  "Titel": "[VERSION] Stage [DATUM] - Overview",
+  "Version": "[VERSION - z.B. '1.4.0']",
+  "Projekt": "DTEFS",
+  "Datum": "[DATUM - z.B. '18.02.2026']",
+  "Tester": "Tobias Buß",
+  "ServiceAccountID": "",
+  "Startzeit": "[START_ZEIT - z.B. '08:30']",
+  "Endzeit": "[ENDE_ZEIT - z.B. '18:30']",
+  "Zeitzone": "Mitteleuropäische Zeit (MEZ) + DST",
+  "Symbolvergabe": {
+    "Beschreibung": "Erklärung der verwendeten Symbole",
+    "Symbole": [
+      {
+        "Symbol": "🧪",
+        "Bedeutung": "Dieser Test MUSS MINDESTENS einmal durchgeführt werden"
+      },
+      {
+        "Symbol": "☁️",
+        "Bedeutung": "Dieser Test MUSS MINDESTENS einmal in der Cloud durchgeführt werden"
+      },
+      {
+        "Symbol": "🔌",
+        "Bedeutung": "Dieser Test MUSS MINDESTENS einmal auf einer Box durchgeführt werden"
+      },
+      {
+        "Symbol": "📱",
+        "Bedeutung": "Dieser Test MUSS MINDESTENS einmal auf einem mobilen Gerät durchgeführt werden"
+      },
+      {
+        "Symbol": "🖥️",
+        "Bedeutung": "Dieser Test MUSS MINDESTENS einmal auf einem Desktop Gerät durchgeführt werden"
+      }
+    ],
+    "Hinweis": "Mehrfachnennungen sind möglich, z.B. ☁️📱, 📱🖥️, 🔌☁️📱"
+  },
+  "TestAccounts": [
+    "test+[DATUM]-1@hosenso.cloud",
+    "test+[DATUM]-2@hosenso.cloud",
+    "test+[DATUM]-3@hosenso.cloud"
+  ],
+  "GeräteIDs": {
+    "BoxIDs": [
+      "[BOX_ID_1]",
+      "_________________________________________________________",
+      "_________________________________________________________",
+      "_________________________________________________________",
+      "_________________________________________________________",
+      "_________________________________________________________"
+    ],
+    "DesktopGeräte": [
+      {
+        "Gerätename": "LAPTOP-P16V",
+        "Prozessor": "AMD Ryzen 9 PRO 7940HS w/ Radeon 780M Graphics (4.00 GHz)",
+        "RAM": "64,0 GB (62,7 GB verwendbar)",
+        "GeräteID": "[GERÄTE_ID]",
+        "ProduktID": "[PRODUKT_ID]",
+        "Systemtyp": "64-Bit-Betriebssystem, x64-basierter Prozessor",
+        "Edition": "Windows 11 Business",
+        "Version": "25H2",
+        "InstalliertAm": "[INSTALLIERT_AM]",
+        "Betriebssystembuild": "[BUILD]",
+        "Funktionspaket": "Windows Feature Experience Pack 1000.26100.275.0",
+        "Browser": {
+          "Name": "Microsoft Edge",
+          "Version": "[BROWSER_VERSION]",
+          "Revision": "[REVISION]",
+          "ChromiumVersion": "[CHROMIUM_VERSION]"
+        },
+        "Plattformen": "☁️📱🖥️"
+      }
+    ],
+    "MobileGeräte": [
+      {
+        "Name": "iPhone 15",
+        "OS": "iOS 26.1",
+        "Plattformen": "☁️📱🖥️"
+      },
+      {
+        "Name": "Lenovo Tab M11 TB330FU",
+        "OS": "Android v15",
+        "Version": "Lenovo ZUI17.0.138 (stabile Version)",
+        "Plattformen": "☁️📱🖥️"
+      }
+    ]
+  },
+  "TestKategorien": [
+    {
+      "Name": "Authentifizierungsbildschirm",
+      "Tests": [
+        {
+          "Testfall": "Hosenso Logo vorhanden? (CDN Funktionalität)",
+          "Plattformen": "🔌☁️📱",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "...leeren E-Mail-Adresse --> \"Die E-Mail-Adresse oder der Benutzername darf nicht leer sein.\"",
+          "Plattformen": "🔌☁️📱",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "...ungültigen E-Mail-Adresse (z.B. \"info@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaangelobreuer.de\")",
+          "Plattformen": "🔌☁️📱",
+          "Status": "⚠️",
+          "Bemerkung": "Funktioniert generell wie es soll nur auf ios gibts nicht den typischen warnhinweis das die email ungültig ist, wie bei den anderen geräten",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "...gültigen E-Mail-Adresse -> Weiterleitung auf Passworteingabe, Registrierung, oder Passwortvergabe",
+          "Plattformen": "🔌☁️📱",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Alte E-Mail-Adresse der letzten Anmeldung wird angezeigt (Vorbelegung)",
+          "Plattformen": "🔌☁️📱",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Hosenso Logo vorhanden? (CDN Funktionalität)",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Vorher genutzte E-Mail-Adresse korrekt angezeigt? (inkl. Groß- und Kleinschreibung)",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "F5 (Aktualisieren der Seite) leitet zurück auf /authentication/challenge",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Leeres Passwort führt zum Fehler",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Passwort ohne acht Zeichen führt zum Fehler",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Passwort ohne Kleinbuchstabe führt zum Fehler",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Passwort ohne Großbuchstabe führt zum Fehler",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Passwort ohne Zahl führt zum Fehler",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Passwort ohne Symbol führt zum Fehler",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Passwort ohne vier einzigartige Zeichen führt zum Fehler",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Passwort anzeigen/verstecken funktional",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "\"Datenschutzerklärung\" Link öffnet Dialog",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Klick auf \"Registrieren\" ohne Datenschutzerklärung zeigt Fehler",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Hosenso Logo vorhanden? (CDN Funktionalität)",
+          "Plattformen": "🔌☁️📱",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Vorher genutzte E-Mail-Adresse korrekt angezeigt? (inkl. Groß- und Kleinschreibung)",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "F5 (Aktualisieren der Seite) leitet zurück auf /authentication/challenge",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Leeres Passwort führt zum Fehler",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Ungültiges Passwort führt zum Fehler",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Passwort anzeigen/verstecken funktional",
+          "Plattformen": "🔌☁️📱🖥️",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Mehrfaches falsches Passwort führt nicht zum Verlust des Tickets",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Zweiter Tab ist angemeldet, wenn \"Angemeldet bleiben\" aktiv war (localStorage != sessionStorage)",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Zweiter Tab ist NICHT angemeldet, wenn \"Angemeldet bleiben\" inaktiv war (localStorage != sessionStorage)",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Privater Tab darf nicht angemeldet sein (localStorage != sessionStorage)",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "\"Nicht Du?\" Knopf führt zurück zur E-Mail Eingabe",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "User benutzt eine Gerät und stuft es als Vertrauenswürdig ein. Nun entfernt er es wieder aus seinen vertrauenswürdigen Geräten und",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "darf erstens sofort keinen Zugriff mehr erhalten.",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "und zweitens darf er keine PushNotification mehr auf diesem Gerät erhalten.",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ],
+      "UIScreen": "/authentication/authenticate"
+    },
+    {
+      "Name": "Anmeldung mit zuvor genutzter Email-Adresse",
+      "Tests": [
+        {
+          "Testfall": "Vorher genutzte E-Mail-Adresse korrekt angezeigt? (inkl. Groß- und Kleinschreibung)",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Das zur E-Mail-Adresse gespeicherte Passwort wird versteckt angezeigt",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Passwort anzeigen/verstecken funktional",
+          "Plattformen": "🔌☁️📱🖥️",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Das zur E-Mail-Adresse gespeicherte Passwort kann angezeigt werden und ist korrekt",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Das zur E-Mail-Adresse gespeicherte Passwort kann geändert werden",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "\"Angemeldet bleiben\" kann gecheckt werden.",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Der Anwender bekommt einen Hinweis, was \"Angemeldet bleiben\" bedeutet",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Die Anmeldung kann durchgeführt werden",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Nach Anmeldung öffnet sich ein Fenster \"Ihr Kennwort aktualisieren\" mit dem Hinweis \"Ihr Kennwort wird beim nächsten Mal automatisch ausgefüllt und auf Ihrem Gerät gespeichert\"",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Der Benutzername ist mit der vorher verwendeten E-Mail-Adresse gefüllt.",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Der Benutzername ist leer und kann über das Pulldown-Menü mit der zuletzt verwendeten Email-Adresse gefüllt werden.",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Der Benutzername ist leer und kann mit der zuletzt verwendeten Email-Adresse gefüllt werden.",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Das zuletzt verwendete Passwort wird versteckt angezeigt",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Das zuletzt verwendete Passwort kann angezeigt werden",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Das zuletzt verwendete Passwort ist korrekt angezeigt werden",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Wenn ausgewählte oder eingegebene Email-Adresse und Passwort gefüllt sind, wird der \"Aktualisieren\"-Button aktiv und kann kann gedrückt werden",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Email-Adresse und dazugehöriges Passwort werden gespeichert und bei der nächsten Anmeldung korrekt vorgeschlagen",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Versionskompatibilität",
+      "Tests": [
+        {
+          "Testfall": "Nutzung der neuen Cloud Version mit älterer App Version funktioniert **Getestet mit Testflight auf iOS**",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Prüfung der Position des Avatars",
+      "Tests": [
+        {
+          "Testfall": "Wechsel zwischen Umwelt / Energiefluss / Kalender / Wetter / Einkaufsliste -> Position des Avatars verändert sich je nach Ansicht.",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Avatar | Einstellungen (| Persönliche Daten)",
+      "Tests": [
+        {
+          "Testfall": "Klick auf Avatar | Einstellungen (| Persönliche Daten) -> Maske \"Persönliche Daten\" öffnet sich",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Persönliche Daten",
+      "Tests": [
+        {
+          "Testfall": "E-Mail-Adresse oder Benutzername *: E-Mail-Adresse eingetragen, nicht änderbar",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Vorname *: Feld Vorname eintragen oder ändern (* = Pflichtfeld)",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Nachname: Feld Nachname eintragen oder ändern",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Geburtsdatum: Eingabe/Änderung Geburtsdatum mittels Tastatur",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Geburtsdatum: Eingabe/Änderung mittels Kalender",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Straße: Eingabe/Änderung Straße",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Nr.: Eingabe/Änderung",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "PLZ: Eingabe/Änderung",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Ort: Eingabe/Änderung",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Profilbild: Eingabe/Änderung",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "hochladen",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "entfernen",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "aufnehmen (gibts kein button für auf dem browser)",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Button [Informationen speichern]",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Avatarbild: wird nach dem Speichern angezeigt",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Klick auf Avatar | Einstellungen (| Darstellung) -> Maske \"Allgemeine Einstellungen\" öffnet sich",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Allgemeine Einstellungen",
+      "Tests": []
+    },
+    {
+      "Name": "Aussehen",
+      "Tests": [
+        {
+          "Testfall": "Auswahl Systemstandard, Hell, Dunkel verändert direkt die Darstellung/ Umstellbarkeit. Wichtig auf allen Geräten!",
+          "Plattformen": "🧪📱🖥️",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Darstellung Systemstandard",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Darstellung hell",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Darstellung dunkel",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "System dunkel / Darstellung Systemstandard",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "System dunkel / Darstellung Hell",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "System dunkel / Darstellung Dunkel",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Prüfung Sichtbarkeit Texte im Modus Systemstandard",
+          "Plattformen": "🧪📱🖥️",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Prüfung Sichtbarkeit Texte im Modus Hell",
+          "Plattformen": "🧪📱🖥️",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Prüfung Sichtbarkeit Texte im Modus Dunkel",
+          "Plattformen": "🧪📱🖥️",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Prüfung Sichtbarkeit Texte im Modus Hell/Dunkel parallel über alle Seiten",
+          "Plattformen": "🧪📱🖥️",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Klick auf das Hosenso-Logo (Linke Navigationsleiste, oben links)",
+      "Tests": [
+        {
+          "Testfall": "Klick auf das Hosenso-Logo (Linke Navigationsleiste, oben links) -> was öffnet sich? Umwelt oder Kalender? **Kalender**",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Regionale Einstellungen",
+      "Tests": []
+    },
+    {
+      "Name": "Währung",
+      "Tests": [
+        {
+          "Testfall": "Währung: Dropdown-Auswahl Euro o.a.",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Währung: Suche in Dropdown-Liste nach z.B. Euro",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "In Abhängigkeit der Auswahl Auswirkung auf Einkaufsliste prüfen!",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Einheitensystem: Dropdown-Auswahl, u.a. Metrisches Einheitensystem (°C, m, km/h)",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Zeitzone: Dropdown-Auswahl (UTC+01:00): Mitteleuropäische Zeit (Berlin)",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Zeitzone: Suche in Dropdown-Liste nach z.B. Berlin",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Abhängigkeiten Kalender, u.a. ganztägige Termine prüfen",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Klick auf Avatar | Einstellungen (| Geräte)",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Dieses Gerät: Gerät, auf dem man gerade angemeldet ist",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Andere Geräte: andere Geräte, auf denen man angemeldet ist/war",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Gerät entfernen -> Erneut \"Entfernen\" drücken",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Klick auf Avatar | Einstellungen (| Kalender)",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Erinnerungszeit",
+      "Tests": [
+        {
+          "Testfall": "Erinnerungszeit: O Minuten  O Stunden  O Tage",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Synchronisierte Kalender",
+      "Tests": [
+        {
+          "Testfall": "Button [Konto hinzufügen] ->",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Button [Wähle deine System-Kalender aus]",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Klick auf Avatar | Einstellungen (| Newsletter)",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Nein, ich möchte den Newsletter nicht erhalten.",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Ja, ich möchte den Newsletter erhalten.",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Klick auf Avatar | Einstellungen (| Einladungen)  Ausstehende Einladungen",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "- [⚠️❌] 🧪  Hinweis, z.B. \"Es gibt keine ausstehenden Einladungen\" wird angezeigtiOs ui design fehler  bug mit einladung versenden und hinzugefügte accounts entfernen",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Hinweis, z.B. \"Es gibt keine ausstehenden Einladungen\" wird angezeigt**iOs ui design fehler** ** bug mit einladung versenden und hinzugefügte accounts entfernen**",
+          "Plattformen": "🧪",
+          "Status": "⚠️❌",
+          "Bemerkung": "siehe Ticket | 🔻 3887 Einladungs-/Account-State-Problem nach EinladungsannahmeDoing",
+          "TicketID": "🔻 3887"
+        },
+        {
+          "Testfall": "Klick auf Avatar | Benachrichtigungen",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Hinweis, z.B. \"Keine Benachrichtigungen\" wird angezeigt",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Klick auf Avatar | Über",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Klick auf Impressum",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Klick auf Datenschutz",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Klick auf hosenso.de",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "X -> Fenster schließen",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Klick auf Avatar | Hilfe",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Support-Anfrage:",
+      "Tests": [
+        {
+          "Testfall": "Info: Beschreibe bitte dein Problem und füge Dateien hinzu, die uns helfen könnten, dein Anliegen zu verstehen und zu lösen. Box: Falls deine Frage mit einer Box in Zusammenhang steht, wähle diese aus.",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "(Liste Boxen): Box auswählen",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Eingabefenster Nachricht",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Anhänge: Dateien auswählen",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Button [Schließen]",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Button [An Support senden]",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Klick auf Avatar | Abmelden",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Abmelden -> ok",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Anmeldung (Browser)",
+      "Tests": []
+    },
+    {
+      "Name": "Nur Cloud möglich",
+      "Tests": [
+        {
+          "Testfall": "Cloudanbieter auswählen",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "E-Mail-Adresse eingeben",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Button [Anmelden]",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Oder melde dich einfach mit deinem Konto bei einem dieser externen Anbieter an:",
+      "Tests": []
+    },
+    {
+      "Name": "An Cloud anmelden",
+      "Tests": [
+        {
+          "Testfall": "Cloudanbieter auswählen",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "E-Mail-Adresse eingeben",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Button [Anmelden]",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "An Box anmelden",
+      "Tests": [
+        {
+          "Testfall": "Box: Auswahlliste Boxen",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Cloudanbieter auswählen",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "E-Mail-Adresse eingeben",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Anmeldung über Android-App",
+      "Tests": []
+    },
+    {
+      "Name": "An Cloud anmelden",
+      "Tests": [
+        {
+          "Testfall": "Cloudanbieter auswählen",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "E-Mail-Adresse",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Anmeldung erfordert keine Gerätebestätigung",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Anmeldung erfordert Gerätebestätigung",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ],
+      "UIScreen": "/preferences/calendar -> KALENDER"
+    },
+    {
+      "Name": "Persönlicher Kalender",
+      "Tests": [
+        {
+          "Testfall": "Aktivieren/Deaktivieren",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Bearbeiten",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Name des Kalenders ändern",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Farbe ändern",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Neuer Kalender",
+      "Tests": [
+        {
+          "Testfall": "Button [Neuer Kalender] Fenster zum Anlegen eines neuen Kalenders öffnet sich",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Name des Kalenders -> Name des Kalenders eingeben",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Farbe -> Farbe kann ausgewählt werden",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Button [Erstellen] -> Kalender wird mit Name und entsprechender Farbe angezeigt",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "- [❌] 🧪 Kalender Löschen  siehe Ticket | 🔻 3888 Kalender kann im Desktop-Browser nicht gelöscht werdenTo Decide",
+          "TicketID": "🔻 3888"
+        },
+        {
+          "Testfall": "Kalender Löschen  **siehe Ticket | 🔻 3888 Kalender kann im Desktop-Browser nicht gelöscht werdenTo Decide **",
+          "Plattformen": "🧪",
+          "Status": "❌",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Checkbox Alle [ ] -> Alle Kalender werden angehakt / nicht angehakt",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Kalender | Aktueller Tag",
+      "Tests": [
+        {
+          "Testfall": "Klick auf das Kalenderblatt-Symbol -> springt in allen Ansichten auf den aktuellen Tag",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Kalenderansichten",
+      "Tests": [
+        {
+          "Testfall": "Auswahl Tag -> Aktueller Tag wird angezeigt **Hinweis** **siehe Ticket | 🔻 3884 Kalender startet bei 12:00 Uhr statt 08:00 Uhr (iOS)To Decide **",
+          "Plattformen": "🧪",
+          "Status": "⚠️",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Auswahl Drei Tage -> Drei Tage werden angezeigt (aktueller Tag und die zwei nächsten Tage) -> ok",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Auswahl Woche -> die nächsten sieben Tage, beginnend mit dem aktuellen Tag, werden angezeigt ->  **iOS: Überlappende Temperaturen bei Wochenansicht**",
+          "Plattformen": "🧪",
+          "Status": "⚠️",
+          "Bemerkung": "siehe Ticket | 🔻 3889 Überlappende Temperaturanzeigen in Kalender-WochenansichtDoing",
+          "TicketID": "🔻 3889"
+        },
+        {
+          "Testfall": "Auswahl Monat -> Anzeige des aktuellen Tages innerhalb eines Monats -> ok",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Auswahl Jahr -> Anzeige des aktuellen Jahres -> ok",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Auswahl Woche -> \"es sind keine termine vorhanden\"- \"termin erstellen\"",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Wechsel zwischen den Ansichten Tag und Monat lässt den aktuellen Tag immer weiter nach unten wandern (nach 4 Wechseln ist der aktuelle Tag verschwunden, weil er nach unten rausgewandert ist (dito Android App)",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Wechsel zwischen Tag und Jahr zeigt das gesamte Jahr, wechselt man wieder zurück in die Tagesansicht, landet man beim 1. Januar. Nach Klick auf Aktueller Tag landet man wieder auf dem aktuellen Tag. Geht man über den Avatar in die Einstellungen, um sich z.B. die Persönlichen Daten anzuschauen und kehrt anschließend in den Kalender zurück, dann steht man wieder auf dem 1. Januar. (dito Android App)",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "zieht man den Scrollbar nach (weit) links in die Vergangenheit, z.B. in Jahr 2000, funktionieren die Ansichten nicht mehr, d.h. Ansicht Tag, Drei Tage, Woche zeigen keine einzelnen Tage mehr an. Lediglich die Monats- und Jahresansicht funktionieren noch. Die anderen Ansichten erholen sich allerdings nicht mehr, d.h. geht man wieder auf Tag, Drei Tage oder Woche werden keine einzelnen Tage angezeigt  (dito Android App, allerdings mit Wischen)",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Auch der Klick auf den aktuellen Tag bringt beim ersten Mal keine Besserung. Erst nach dem 2. Klick auf den aktuellen Tag erholt sich die Anzeige",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Klickt man den Scrollbar in der Tagesansicht ein paar Tage nach links, z.B. vom 27.11.2025 auf den 10.11.2025 und wechselt dann auf die Anzeige Drei Tage, dann ist der 7. November vorn. Klickt man wieder auf die Ansicht Tag, landet man beim 21. November. Startet man die Anwendung ganz neu, dann funktioniert es noch ganz okay, je mehr man allerdings scrollt und Ansichten wechselt, desto \"verwirrter\" wird der Kalender. (dito Android App)",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Die Anzeige des Monats (rechts neben dem aktuellen Tag) passt dabei irgendwann auch nicht mehr zum angezeigten Tag.",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "iOs-App Smartphone: In der Tages-, 3-Tages- und Wochenansicht wird unabhängig von der aktuellen Zeit der Tag default (nach Neustart, Wechsel Umwelt - Kalender, Avatar|Einstellungen, ...) ab 12 h angezeigt. Damit übersieht man die Vormittagstermine. Besser wäre eine Orientierung an der aktuellen Zeit.",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Kein Kalender aktiv",
+      "Tests": [
+        {
+          "Testfall": "Klick in Kalender zum Anlegen eines Termins -> Benutzerhinweis: Es ist kein Kalender ausgewählt -> Um ein neues Ereignis anzulegen, musst du zumindest einen Kalender aktivieren -> Schließen",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Nur Persönlicher Kalender aktiv -> Anlegen des Termin im persönlichen Kalender mit Wiederholung (ohne Ganztägig, Zeitzone, Erinnerungen, Priorität)",
+      "Tests": [
+        {
+          "Testfall": "Klick in Kalender zum Anlegen eines Termins -> Termineingabe öffnet sich",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Persönlicher Kalender ist ausgewählt",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Titel: Eingabe Titel",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Festlegung Zeitraum 10 - 11 Uhr (Eingabe)",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Festlegung Zeitraum 10 - 11 Uhr (über Uhrensymbol)",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Start: 10 Uhr",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Ende: 11 Uhr",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Datum ggf. ändern",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Standort:",
+      "Tests": [
+        {
+          "Testfall": "Standort: Standort eingeben -> Unterstützung Standorteingabe vorhanden?",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Standort: vorherige Eingabe löschen und speichern",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Wiederholung: Termin alle 2 Wochen Dienstags von 20 - 23 Uhr anlegen",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Beschreibung: Eingabe Beschreibung",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Termin duplizieren",
+      "Tests": [
+        {
+          "Testfall": "Termin duplizieren und einen anderen Kalender auswählen",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Kalender teilen",
+      "Tests": [
+        {
+          "Testfall": "⁝ -> Teilen",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Hinweis: Du hast noch keine Gruppen erstellt. Lege hier deine erste Gruppe an. Du kannst diese dann überall zum Teilen wiederverwenden. [Speichern]",
+          "Plattformen": "",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Neue Gruppe anlegen",
+      "Tests": [
+        {
+          "Testfall": "->",
+          "Plattformen": "",
+          "Status": "Neue Gruppe",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Gruppenname anlegen",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Mitglieder hinzufügen",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Nutzer mit E-Mail-Adresse hinterlegen",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Gruppe erstellen [Erstellen]",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Team bearbeiten:",
+      "Tests": [
+        {
+          "Testfall": "Angefragte Personen: Wird die E-Mail-Adresse angezeigt?",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Email Hosenso | Gruppeneinladung bestätigen erhalten",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Email Hosenso | Gruppeneinladung bestätigen bestätigt",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Nach Bestätigung:",
+      "Tests": [
+        {
+          "Testfall": "neues Mitglied bestätigt?",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Team bearbeiten",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Teamname ändern",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Ganztägiger Termin:",
+      "Tests": [
+        {
+          "Testfall": "Anlegen eines Termin am 1.03.2026, 10 - 11 Uhr",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Umstellen des Termins auf Ganztägig",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Anzeige Mouseover",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Termin öffnen -> Ganztägig aktiv?",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Termin im geteilten Kalender vorhanden?",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Terminänderungen:",
+      "Tests": [
+        {
+          "Testfall": "Termin im geteilten Kalender bearbeiten -> Ganztägig wieder rausnehmen",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Termin im geteilten Kalender bearbeiten (Smartphone Android App), z.B. Ganztägig rausnehmen, Uhrzeit 10:00 bis 11:05 eingeben -> Speichern",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Änderung des Termin von 10:00 - 10:05",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Änderung Zeitzone: Start Mitteleuropäische Zeit -> Berlin / Endzeit Nordamerikanische Zeit (New York)",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Erinnerungen:",
+      "Tests": [
+        {
+          "Testfall": "Erinnerung -> Termin mit Erinnerung anlegen",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Push Notifications auf Android Smartphone und Tablet erhalten?",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Termin in geeilten Kalendern sichtbar?",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Wiederholung",
+      "Tests": [
+        {
+          "Testfall": "Anlegen eines Termins (12:00 - 12:30) im geteilten Kalender -> Termin überall sichtbar?",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Wiederholung einstellen: Täglich, Nur an Wochentagen Mo, Di, Mi, Do, Fr, endet am ...",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Erneutes Öffnen des Termins",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Öffnen des Termins in geteiltem Kalender",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Klick auf \"Zur Serie\"",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Kontrolle der Terminserie im Kalender, insbesondere Start und Ende sowie Korrektheit/Anzahl der angelegten Termine",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Wichtigkeit",
+      "Tests": [
+        {
+          "Testfall": "Termin wird immer mit Wichtigkeit \"Normal\" angelegt",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Termin mit Wichtigkeit \"Hoch\" -> Rotes Flag",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Termin mit Wichtigkeit \"Hoch\" -> Mouseover",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Termin mit Wichtigkeit \"Niedrig\" -> Grünes Flag",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Termin mit Wichtigkeit \"Niedrig\" -> Mouseover",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Browser -> ?",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Android App -> ?",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "sind Metadaten vorhanden, z.B. angelegt von, angelegt um,",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Wiederholung nach längerer Laufzeit der App",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Terminänderung/-löschung in geteilten Kalendern",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Avatar|Einstellungen|Kalender",
+      "Tests": [
+        {
+          "Testfall": "Synchronisierte Kalender -> [Konto hinzufügen] -> Auswahl [Google] oder [Microsoft]",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Auswahl [Google] -> Über Google anmelden - Konto auswählen -> ok",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Hosenso Calender Syn möchte auf Ihr Google-Konto zugreifen -> [Abbrechen] [Weiter]",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "[Weiter]",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Konto auswählen",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Synchronisationskalender hinzufügen:",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Anzeige: Kalender werden im Hintergrund ...",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Zurück zum Kalender:",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Kalender wird angezeigt",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Avatar|Einstellungen|Kalender|Synchronisierte Kalender|Konto hinzufügen|Microsoft",
+      "Tests": [
+        {
+          "Testfall": "Auswahl Microsoft:",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Microsoft-Konto auswählen",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Auswahl Konto",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Synchronisationskalender hinzufügen: Kalender -> Auswählen",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Anzeige: Kalender werden im Hintergrund ...",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Zurück zum Kalender:",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Kalender wird angezeigt",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Anlegen eines Termin in synchronisierten Kalendern (Google)",
+      "Tests": []
+    },
+    {
+      "Name": "Anlegen des Termins im Googlekalender",
+      "Tests": [
+        {
+          "Testfall": "Termin anlegen",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Termin wird wenige Sekunden später im Hosenso-Kalender angezeigt",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Ergänzung des Termins in Hosenso -> Speichern",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Termin (Hosenso) auf hohe Prio gesetzt (Wichtigkeit: Hoch) -> Speichern",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Google: Termin geändert?",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Google-Termin 2. Erinnerung hinzugefügt (1 Tag vorher)",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Hosenso: 2. Erinnerungszeit wird angezeigt?",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Speichern des Termins in Hosenso",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Google: 2. Erinnerung noch vorhanden?",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Hosenso: Ganztägig rausnehmen",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Google: ist Ganztägig rausgenommen?",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Hosenso: Ganztägig wieder gesetzt?",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Wiederholung einstellen: Überprüfung, ob die Konfiguration der Wiederholung in Hosenso und Google kompatibel ist",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Im Google-Kalender sind Kombinationen aus alle ... Tage und der Aktivierung einzelner Wochentage nicht möglich und einzelne Tage können nur auf Wochen-Ebene festgelegt werden und nicht auf Monats- oder Tagesebene",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Outlook - Erinnerungen",
+      "Tests": [
+        {
+          "Testfall": "Outlook: Termin anlegen. In Outlook angelegte Termine haben grundsätzlich 15 Minuten Erinnerung",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Hosenso: Überprüfung",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Outlook: Erinnerung auf \"Nicht mehr erinnern\"",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Hosenso: Überprüfung",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Outlook - Wiederholung",
+      "Tests": [
+        {
+          "Testfall": "Outlook: Anlegen eines Termins mit Wiederholung",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Hosenso: Überprüfung",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Outlook: Änderung auf Wochentage ändert die Wiederholung auf Woche",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Hosenso: Überprüfung",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Hosenso: Wieder Wechsel auf täglich und alle 4 Tage in Kombination mit Wochentagen -> daraus ergeben Kombinationen, die in Outlook so nicht abbildbar sind",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Outlook: Überprüfung",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Outlook - Ganztag:",
+      "Tests": [
+        {
+          "Testfall": "Outlook: Anlegen eines Termins Ganztag",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Hosenso: Überprüfung",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Importieren eines Kalenders (nur Android App)",
+      "Tests": [
+        {
+          "Testfall": "[Importiere deine Kalender von Deinem Gerät] -> Maske Kalenderauswahl",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Pull-Down von dem Kalender anwählen, der importiert werden soll",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Auswahl -> \"Neuen Kalender erstellen\"",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "[Import] drücken -> Kalender-Daten werden importiert",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "In Einstellungen wird der erfolgreiche Import mit der Anzahl der importierten Einträge angezeigt",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "[Kalender] anwählen",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Kalender wird angezeigt",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Bearbeiten von importierten Kalendern",
+      "Tests": [
+        {
+          "Testfall": "Klick auf Drei-Punkte-Menü ⁝",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Auswahl \"Bearbeiten\"",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Auswahl \"Teilen\"",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Auswahl \"Zum privaten Kalender machen\"",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Auswahl \"Kalender löschen\"",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Anlegen/Entfernen von Systemkalendern",
+      "Tests": [
+        {
+          "Testfall": "Deine System-Kalender -> [Wähle deine System-Kalender aus]",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Fenster \"Wähle deine System-Kalender aus\" öffnet sich",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Auf + von \"+ Europe\" drücken, um den Baum zu öffnen",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Nach unten scrollen, um das gewünschte Land zu finden",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Auf + von \"+ Germany\" drücken, um den Baum zu öffnen",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Bundesland auswählen -> Pulldown mit Auswahl Schulferien, Feiertage öffnet sich",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Gewünschte Systemkalender auswählen, anklicken (auch für zwei Bundesländer)",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "[Übernehmen] drücken",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Ausgewählte Systemkalender werden unter \"Deine System-Kalender\" angezeigt",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Änderungen speichern (s.u. \"Möchtest Du die Änderungen speichern?\") -> [Speichern]",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Erfolgt bei Ohne [Speichern] zurück (< Einstellungen) ein Hinweis, dass die Änderungen nicht gespeichert wurden?",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Bearbeiten von Systemkalendern",
+      "Tests": [
+        {
+          "Testfall": "Aktivieren/Deaktivieren von Systemkalendern",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Farbe ändern (nicht möglich)",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Systemkalender umbenennen (nicht möglich)",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Systemkalender entfernen (nur über Avatar/Einstellungen/Kalender)",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Löschen von Kalendern",
+      "Tests": []
+    },
+    {
+      "Name": "Löschen von Systemkalender",
+      "Tests": [
+        {
+          "Testfall": "Systemkalender entfernen (über Avatar/Einstellungen/Kalender)",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Änderungen speichern (s.u. \"Möchtest Du die Änderungen speichern?\") -> [Speichern]",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "- [❌] 🧪 angelegte Kalender Löschen  siehe Ticket | 🔻 3888 Kalender kann im Desktop-Browser nicht gelöscht werdenTo Decide",
+          "TicketID": "🔻 3888"
+        },
+        {
+          "Testfall": "angelegte Kalender Löschen  **siehe Ticket | 🔻 3888 Kalender kann im Desktop-Browser nicht gelöscht werdenTo Decide **",
+          "Plattformen": "🧪",
+          "Status": "❌",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Klick auf den Reiter \"wetter\"         **HINWEIS: Browser Desktop****siehe Ticket | 🔻 3886 Wetter-Reiter fehlt im Desktop-Browser + UX-Inkonsistenzen (Android-App)To Decide **",
+          "Plattformen": "🧪",
+          "Status": "✅❌",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Anzeige \"Mein aktueller Standort\"",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Auswahl Dropdownmenün mit boxen",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Anzeige Wetter und Temp. Heute",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Anzeige mittlere box mit Temp. u. Wetter Velauf des Heutigen Tages, scrollfähig",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "- [✅⚠️] 🧪 Anzeige untere box mit Temp. u: Wetter Velauf der nächsten 14 Tage, scrollfähig HINWEIS:Adroid App siehe ticket|  🔻 3885 Wetteransicht – visuelle Artefakte / Pixel-FlackernTo Decide",
+          "TicketID": "🔻 3885"
+        },
+        {
+          "Testfall": "Anzeige untere box mit Temp. u: Wetter Velauf der nächsten 14 Tage, scrollfähig **HINWEIS:Adroid App** **siehe ticket|  🔻 3885 Wetteransicht – visuelle Artefakte / Pixel-FlackernTo Decide **",
+          "Plattformen": "🧪",
+          "Status": "✅⚠️",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Verwalten:",
+      "Tests": []
+    },
+    {
+      "Name": "Controller hinzufügen:",
+      "Tests": []
+    },
+    {
+      "Name": "Hinzufügen Matter-Controller:",
+      "Tests": []
+    },
+    {
+      "Name": "Zunächst wird das Gerät HOSENSO Matter Controller hinzugefügt (als Folge aus der Aktivierung der Integration Matter)",
+      "Tests": [
+        {
+          "Testfall": "neu erkanntes Gerät hinzufügen -> HOSENSO Matter Controller",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Zuordnung treffen",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "SSID (Netzwerkname) eingeben",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Eingabe Zugangsschlüssel sichtbar / nicht sichtbar",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "HOSENSO Matter Controller zugeordnet?",
+          "Plattformen": "🧪",
+          "Status": "✅",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Hinzufügen Zigbee-Controller:",
+      "Tests": []
+    },
+    {
+      "Name": "Anschließend wird das Gerät HOSENSO Zigbee Controller hinzugefügt (als Folge aus der Aktivierung der Integration Zigbee)",
+      "Tests": [
+        {
+          "Testfall": "Neu entdeckte Geräte -> HOSENSO Zigbee Controller -> hinzufügen",
+          "Plattformen": "🧪",
+          "Status": "❌",
+          "Bemerkung": "- [❌] 🧪 Zuordnung treffen  Siehe Ticket | 🔻 3896 Zigbee-Controller wird nach Integration-Reset nicht erkanntTo Decide",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "Zuordnung treffen  **Siehe Ticket | 🔻 3896 Zigbee-Controller wird nach Integration-Reset nicht erkanntTo Decide **",
+          "Plattformen": "🧪",
+          "Status": "❌",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Geräte hinzufügen:",
+      "Tests": []
+    },
+    {
+      "Name": "Anschließend können Geräte hinzugefügt werden",
+      "Tests": []
+    },
+    {
+      "Name": "Hosenso-Steckdose:",
+      "Tests": []
+    },
+    {
+      "Name": "Klick auf Gerät ⁝",
+      "Tests": [
+        {
+          "Testfall": "Löschen -> Sicherheitsabfrage öffnet sich  **siehe ticket | 🔻 3895 Controller/Geräte können in der Geräteverwaltung nicht gelöscht werdenTo Decide **",
+          "Plattformen": "🧪",
+          "Status": "❌",
+          "Bemerkung": "",
+          "TicketID": ""
+        },
+        {
+          "Testfall": "-> Zigbee",
+          "Plattformen": "",
+          "Status": "] 🧪 Button [Du kannst den gewünschten Gerätetyp nicht finden?",
+          "Bemerkung": "",
+          "TicketID": ""
+        }
+      ]
+    },
+    {
+      "Name": "Gerät hinzufügen bei Veränderung des Abstands zwischen Box und Gerät beim Pairing (Weitere Einflussfaktoren: Abschirmung durch Hindernisse zwischen Gerät und Box, z.B. Wände, Menschen, Lampenfassungen, Ausrichtung der Lampe, ...)",
+      "Tests": []
+    },
+    {
+      "Name": "Weitere Geräte-Typen",
+      "Tests": []
+    },
+    {
+      "Name": "PhilipsHue",
+      "Tests": []
+    },
+    {
+      "Name": "Zigbee / Lampe Ikea",
+      "Tests": []
+    },
+    {
+      "Name": "Shelly",
+      "Tests": []
+    },
+    {
+      "Name": "Shelly Steckdose Shelly Plug über IPhone",
+      "Tests": []
+    },
+    {
+      "Name": "Pairingmodus: Kopf gedrückt gehalten bis von Blau blinkend auf rot blinkend umgesprungen ist!",
+      "Tests": []
+    },
+    {
+      "Name": "Shelly Steckdose Shelly Plug S über IPhone",
+      "Tests": []
+    },
+    {
+      "Name": "Tasmota",
+      "Tests": []
+    },
+    {
+      "Name": "Tasmota NOUS Smart Switch D1T (Verbrauchsmessung)",
+      "Tests": []
+    },
+    {
+      "Name": "Tasmota Rolladenschalter",
+      "Tests": []
+    },
+    {
+      "Name": "Wallbox a-TroniX Wallbox",
+      "Tests": []
+    },
+    {
+      "Name": "Fritz",
+      "Tests": []
+    },
+    {
+      "Name": "Fritzbox Gateway hinzufügen",
+      "Tests": []
+    },
+    {
+      "Name": "Fritzbox neues Gerät",
+      "Tests": []
+    },
+    {
+      "Name": "Fritzbox neues Gerät",
+      "Tests": [],
+      "UIScreen": "/environment/control - STEUERUNG"
+    },
+    {
+      "Name": "Darstellung SystemController",
+      "Tests": []
+    },
+    {
+      "Name": "Steuern/Lampensteuerung",
+      "Tests": []
+    },
+    {
+      "Name": "Steuern",
+      "Tests": []
+    },
+    {
+      "Name": "Automatisierung (Zeitauslöser)",
+      "Tests": []
+    },
+    {
+      "Name": "Automatisierung (Gerätestatus)",
+      "Tests": []
+    },
+    {
+      "Name": "Automatisierung mit Aktion \"Verzögerung\"",
+      "Tests": []
+    },
+    {
+      "Name": "Szenario 1: App offline (Flugmodus)",
+      "Tests": []
+    },
+    {
+      "Name": "Szenario 2: Box offline (Router offline)",
+      "Tests": []
+    },
+    {
+      "Name": "Szenario 3: Router denkt er ist online, aber keine Daten",
+      "Tests": []
+    }
+  ]
+}
