@@ -1,0 +1,248 @@
+{
+  "Titel": "1.3.5 Stage 10.02.2026 - Overview",
+  "Version": "1.3.5",
+  "Datum": "10.02.2026",
+  "Tester": "Tobias Binder",
+  "ServiceAccountID": "stage-test@hosenso.com",
+  "Startzeit": "09:00",
+  "Endzeit": "17:30",
+  "GeräteIDs": {
+    "Android": "SM-G998B",
+    "iOS": "iPhone 13 Pro",
+    "Desktop": "WIN-DEV-01"
+  },
+  "TestKategorien": [
+    {
+      "Kategorie": "🔐 Authentifizierung & Autorisierung",
+      "UIScreens": [
+        {
+          "Screen": "Login-Screen",
+          "Tests": [
+            {
+              "Test": "Login mit gültigen Credentials",
+              "Status": "Bestanden",
+              "Bemerkung": "Erfolgreicher Login auf allen Plattformen"
+            },
+            {
+              "Test": "Login mit ungültigen Credentials",
+              "Status": "Bestanden",
+              "Bemerkung": "Fehlermeldung korrekt angezeigt"
+            },
+            {
+              "Test": "Passwort-Zurücksetzen Flow",
+              "Status": "Bestanden",
+              "Bemerkung": "E-Mail erfolgreich versendet"
+            }
+          ]
+        },
+        {
+          "Screen": "Registrierung",
+          "Tests": [
+            {
+              "Test": "Neue Benutzerregistrierung",
+              "Status": "Bestanden",
+              "Bemerkung": "Account erfolgreich erstellt"
+            },
+            {
+              "Test": "E-Mail-Verifizierung",
+              "Status": "Warnung",
+              "Bemerkung": "Verzögerung bei E-Mail-Zustellung (~2 Min)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Kategorie": "📊 Dashboard & Übersicht",
+      "UIScreens": [
+        {
+          "Screen": "Haupt-Dashboard",
+          "Tests": [
+            {
+              "Test": "Dashboard lädt alle Widgets",
+              "Status": "Bestanden",
+              "Bemerkung": "Alle Komponenten laden korrekt"
+            },
+            {
+              "Test": "Echtzeit-Daten-Updates",
+              "Status": "Bestanden",
+              "Bemerkung": "WebSocket-Verbindung stabil"
+            },
+            {
+              "Test": "Responsive Layout auf Mobile",
+              "Status": "Warnung",
+              "Bemerkung": "Kleinere Layout-Probleme auf iOS Safari"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Kategorie": "📁 Datenverwaltung",
+      "UIScreens": [
+        {
+          "Screen": "Datenliste",
+          "Tests": [
+            {
+              "Test": "Daten laden und anzeigen",
+              "Status": "Bestanden",
+              "Bemerkung": "Pagination funktioniert korrekt"
+            },
+            {
+              "Test": "Sortierung nach Spalten",
+              "Status": "Bestanden",
+              "Bemerkung": "Alle Sortieroptionen funktional"
+            },
+            {
+              "Test": "Filterung und Suche",
+              "Status": "Bestanden",
+              "Bemerkung": "Suchfunktion reagiert schnell"
+            }
+          ]
+        },
+        {
+          "Screen": "Daten-Detail-Ansicht",
+          "Tests": [
+            {
+              "Test": "Details anzeigen",
+              "Status": "Bestanden",
+              "Bemerkung": "Alle Felder korrekt dargestellt"
+            },
+            {
+              "Test": "Daten bearbeiten",
+              "Status": "Fehlgeschlagen",
+              "Bemerkung": "Validierungsfehler bei Datumsfeld - Bug #3926"
+            },
+            {
+              "Test": "Daten löschen",
+              "Status": "Bestanden",
+              "Bemerkung": "Bestätigungsdialog funktioniert"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Kategorie": "🔔 Benachrichtigungen",
+      "Tests": [
+        {
+          "Test": "Push-Benachrichtigungen empfangen",
+          "Status": "Bestanden",
+          "Bemerkung": "Notifications auf Android und iOS"
+        },
+        {
+          "Test": "In-App Benachrichtigungen",
+          "Status": "Bestanden",
+          "Bemerkung": "Toast-Messages korrekt angezeigt"
+        },
+        {
+          "Test": "E-Mail-Benachrichtigungen",
+          "Status": "Info",
+          "Bemerkung": "Verzögerung von ~5 Min bei E-Mail-Versand"
+        }
+      ]
+    }
+  ],
+  "PlattformTests": [
+    {
+      "Plattform": "Backend",
+      "Tests": [
+        {
+          "Test": "API-Endpunkte Erreichbarkeit",
+          "Status": "Bestanden",
+          "Bemerkung": "Alle Endpoints antworten korrekt"
+        },
+        {
+          "Test": "Datenbank-Migrationen",
+          "Status": "Bestanden",
+          "Bemerkung": "Schema-Update erfolgreich"
+        },
+        {
+          "Test": "Performance unter Last",
+          "Status": "Warnung",
+          "Bemerkung": "Erhöhte Response-Zeit bei >100 concurrent users"
+        }
+      ]
+    },
+    {
+      "Plattform": "Cloud",
+      "Tests": [
+        {
+          "Test": "Azure Storage Zugriff",
+          "Status": "Bestanden",
+          "Bemerkung": "Blob Storage funktioniert einwandfrei"
+        },
+        {
+          "Test": "CDN Delivery",
+          "Status": "Bestanden",
+          "Bemerkung": "Assets werden schnell ausgeliefert"
+        }
+      ]
+    },
+    {
+      "Plattform": "Mobile",
+      "Tests": [
+        {
+          "Test": "App-Start Performance",
+          "Status": "Bestanden",
+          "Bemerkung": "Cold Start <3 Sekunden"
+        },
+        {
+          "Test": "Offline-Modus",
+          "Status": "Warnung",
+          "Bemerkung": "Sync nach Reconnect verzögert"
+        }
+      ]
+    },
+    {
+      "Plattform": "Desktop",
+      "Tests": [
+        {
+          "Test": "Browser-Kompatibilität Chrome",
+          "Status": "Bestanden",
+          "Bemerkung": "Alle Features funktional"
+        },
+        {
+          "Test": "Browser-Kompatibilität Firefox",
+          "Status": "Bestanden",
+          "Bemerkung": "Keine Probleme festgestellt"
+        },
+        {
+          "Test": "Browser-Kompatibilität Edge",
+          "Status": "Bestanden",
+          "Bemerkung": "Vollständig kompatibel"
+        }
+      ]
+    }
+  ],
+  "TestAccounts": [
+    {
+      "Account": "admin@stage.hosenso.com",
+      "Rolle": "Administrator",
+      "Verwendung": "Vollzugriff auf alle Funktionen"
+    },
+    {
+      "Account": "user@stage.hosenso.com",
+      "Rolle": "Standard-Benutzer",
+      "Verwendung": "Normale Benutzer-Workflows"
+    },
+    {
+      "Account": "readonly@stage.hosenso.com",
+      "Rolle": "Nur-Lesen",
+      "Verwendung": "Eingeschränkte Berechtigungen testen"
+    }
+  ],
+  "BlockierteTests": [
+    {
+      "Test": "Export zu Excel",
+      "Grund": "Backend-Bug verhindert Export",
+      "Ticket": "#3930"
+    },
+    {
+      "Test": "Mehrfach-Upload von Dateien",
+      "Grund": "File-Handler wirft Exception",
+      "Ticket": "#3918"
+    }
+  ],
+  "Zusammenfassung": "**Gesamt:** 42 Tests durchgeführt\n\n**Ergebnis:**\n- ✅ Bestanden: 35 (83%)\n- ⚠️ Warnung: 5 (12%)\n- ❌ Fehlgeschlagen: 1 (2%)\n- ℹ️ Info: 1 (2%)\n- 🚫 Blockiert: 2\n\n**Kritische Probleme:**\n- Bug #3926: Datumsfeld-Validierung fehlerhaft (Priorität: Hoch)\n- Bug #3930: Excel-Export funktioniert nicht (Priorität: Mittel)\n- Bug #3918: Mehrfach-Upload wirft Exception (Priorität: Mittel)\n\n**Empfehlungen:**\n1. Bug #3926 vor Production-Release beheben\n2. Performance-Optimierung für >100 concurrent users\n3. E-Mail-Delivery-Verzögerung untersuchen\n4. iOS Safari Layout-Probleme im nächsten Sprint adressieren"
+}

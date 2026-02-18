@@ -43,7 +43,7 @@ param(
     [string]$ConfigFile,
     
     [Parameter(Mandatory=$true, HelpMessage="Dokumenttyp")]
-    [ValidateSet('BugTicket', 'TestProtokoll', 'Lösungskonzept', 'AnalyseBericht', 'TestCases')]
+    [ValidateSet('BugTicket', 'TestProtokoll', 'Lösungskonzept', 'AnalyseBericht', 'TestCases', 'QTStageProtokoll')]
     [string]$Template,
     
     [Parameter(Mandatory=$false, HelpMessage="Ausgabepfad für Markdown-Dokument")]
@@ -75,7 +75,7 @@ function Test-QAConfig {
         $Data,
 
         [Parameter(Mandatory = $true)]
-        [ValidateSet('BugTicket', 'TestProtokoll', 'Lösungskonzept', 'AnalyseBericht', 'TestCases')]
+        [ValidateSet('BugTicket', 'TestProtokoll', 'Lösungskonzept', 'AnalyseBericht', 'TestCases', 'QTStageProtokoll')]
         [string]$Template
     )
 
@@ -167,6 +167,25 @@ function Test-QAConfig {
         'AnalyseBericht' {
             foreach ($p in @('Titel','Datum','Ersteller','Bereich','ExecutiveSummary','Analyseziele','Methodik','Ergebnisse','Empfehlungen','Priorisierung','Fazit')) {
                 if (-not (Has-Prop $Data $p)) { Add-Err "AnalyseBericht: Pflichtfeld fehlt oder ist leer: '$p'." }
+            }
+        }
+        'QTStageProtokoll' {
+            # Metadaten
+            foreach ($p in @('Titel','Version','Datum','Tester','ServiceAccountID','Startzeit','Endzeit')) {
+                if (-not (Has-Prop $Data $p)) { Add-Err "QTStageProtokoll: Pflichtfeld fehlt oder ist leer: '$p'." }
+            }
+            # Geräte-IDs
+            if (-not (Has-Prop $Data 'GeräteIDs')) { Add-Err "QTStageProtokoll: Pflichtfeld fehlt: 'GeräteIDs'." }
+            # Test-Kategorien
+            if (-not (Has-Prop $Data 'TestKategorien')) { Add-Err "QTStageProtokoll: Pflichtfeld fehlt: 'TestKategorien'." }
+            elseif (-not (Is-Array $Data.TestKategorien)) { Add-Err "QTStageProtokoll: 'TestKategorien' muss ein Array sein." }
+            # Test-Accounts (optional)
+            if (Has-Prop $Data 'TestAccounts' -and -not (Is-Array $Data.TestAccounts)) {
+                Add-Err "QTStageProtokoll: 'TestAccounts' muss ein Array sein."
+            }
+            # Blockierte Tests (optional)
+            if (Has-Prop $Data 'BlockierteTests' -and -not (Is-Array $Data.BlockierteTests)) {
+                Add-Err "QTStageProtokoll: 'BlockierteTests' muss ein Array sein."
             }
         }
     }
@@ -571,6 +590,145 @@ $($Data.Erfolgskriterien -join "`n")
     return $markdown
 }
 
+# Funktion: QT Stage Protokoll generieren
+function New-QTStageProtokollDocument {
+    param($Data)
+    
+    # Helper: Symbol-Mapping
+    function Get-StatusSymbol($status) {
+        switch ($status) {
+            'Bestanden' { return '✅' }
+            'Warnung' { return '⚠️' }
+            'Info' { return 'ℹ️' }
+            'Fehlgeschlagen' { return '❌' }
+            default { return '❓' }
+        }
+    }
+    
+    function Get-PlatformSymbol($platform) {
+        switch ($platform) {
+            'Backend' { return '🔌' }
+            'Cloud' { return '☁️' }
+            'Mobile' { return '📱' }
+            'Desktop' { return '🖥️' }
+            default { return '' }
+        }
+    }
+    
+    $markdown = @"
+# $($Data.Titel)
+
+---
+
+## 📊 Metadaten
+
+**Tester:** $($Data.Tester)  
+**Service Account ID:** $($Data.ServiceAccountID)  
+**Startzeit:** $($Data.Startzeit)  
+**Endzeit:** $($Data.Endzeit)  
+**Datum:** $($Data.Datum)  
+**Version:** $($Data.Version)  
+
+---
+
+## 📱 Geräte-IDs
+
+$($Data.GeräteIDs.PSObject.Properties | ForEach-Object { "**$($_.Name):** $($_.Value)  " } | Out-String)
+
+---
+
+## ✅ Test-Kategorien
+
+"@
+    
+    # Test-Kategorien durchgehen
+    foreach ($kategorie in $Data.TestKategorien) {
+        $markdown += "`n### $($kategorie.Kategorie)`n`n"
+        
+        # UI-Screens (falls vorhanden)
+        if ($kategorie.UIScreens) {
+            foreach ($screen in $kategorie.UIScreens) {
+                $markdown += "#### $($screen.Screen)`n`n"
+                $markdown += "| Test | Status | Bemerkung |`n"
+                $markdown += "|------|--------|-----------|`n"
+                
+                foreach ($test in $screen.Tests) {
+                    $symbol = Get-StatusSymbol $test.Status
+                    $markdown += "| $($test.Test) | $symbol $($test.Status) | $($test.Bemerkung) |`n"
+                }
+                $markdown += "`n"
+            }
+        }
+        
+        # Direkte Tests (falls keine UI-Screens)
+        if ($kategorie.Tests) {
+            $markdown += "| Test | Status | Bemerkung |`n"
+            $markdown += "|------|--------|-----------|`n"
+            
+            foreach ($test in $kategorie.Tests) {
+                $symbol = Get-StatusSymbol $test.Status
+                $markdown += "| $($test.Test) | $symbol $($test.Status) | $($test.Bemerkung) |`n"
+            }
+            $markdown += "`n"
+        }
+    }
+    
+    # Plattform-spezifische Tests
+    if ($Data.PlattformTests) {
+        $markdown += "`n---`n`n## 🖥️ Plattform-spezifische Tests`n`n"
+        
+        foreach ($plattform in $Data.PlattformTests) {
+            $symbol = Get-PlatformSymbol $plattform.Plattform
+            $markdown += "### $symbol $($plattform.Plattform)`n`n"
+            $markdown += "| Test | Status | Bemerkung |`n"
+            $markdown += "|------|--------|-----------|`n"
+            
+            foreach ($test in $plattform.Tests) {
+                $statusSymbol = Get-StatusSymbol $test.Status
+                $markdown += "| $($test.Test) | $statusSymbol $($test.Status) | $($test.Bemerkung) |`n"
+            }
+            $markdown += "`n"
+        }
+    }
+    
+    # Test-Accounts
+    if ($Data.TestAccounts -and $Data.TestAccounts.Count -gt 0) {
+        $markdown += "`n---`n`n## 👤 Test-Accounts`n`n"
+        $markdown += "| Account | Rolle | Verwendung |`n"
+        $markdown += "|---------|-------|------------|`n"
+        
+        foreach ($account in $Data.TestAccounts) {
+            $markdown += "| $($account.Account) | $($account.Rolle) | $($account.Verwendung) |`n"
+        }
+        $markdown += "`n"
+    }
+    
+    # Blockierte Tests
+    if ($Data.BlockierteTests -and $Data.BlockierteTests.Count -gt 0) {
+        $markdown += "`n---`n`n## 🚫 Blockierte Tests`n`n"
+        $markdown += "| Test | Grund | Ticket |`n"
+        $markdown += "|------|-------|--------|`n"
+        
+        foreach ($blocked in $Data.BlockierteTests) {
+            $markdown += "| $($blocked.Test) | $($blocked.Grund) | $($blocked.Ticket) |`n"
+        }
+        $markdown += "`n"
+    }
+    
+    # Zusammenfassung
+    if ($Data.Zusammenfassung) {
+        $markdown += "`n---`n`n## 📊 Zusammenfassung`n`n"
+        $markdown += "$($Data.Zusammenfassung)`n`n"
+    }
+    
+    # Footer
+    $markdown += "`n---`n`n"
+    $markdown += "**Erstellt von:** $($Data.Tester)  `n"
+    $markdown += "**Letzte Aktualisierung:** $($Data.Datum)  `n"
+    
+    return $markdown
+}
+
 # Hauptlogik
 Write-Host "=== QA-Dokumenten-Generator ===" -ForegroundColor Cyan
 Write-Host ""
@@ -598,11 +756,12 @@ catch {
 Write-Host "Generiere $Template Dokument..." -ForegroundColor Yellow
 
 $markdown = switch ($Template) {
-    'BugTicket'       { New-BugTicketDocument -Data $config }
-    'TestProtokoll'   { New-TestProtokollDocument -Data $config }
-    'Lösungskonzept'  { New-LösungskonzeptDocument -Data $config }
-    'AnalyseBericht'  { New-AnalyseBerichtDocument -Data $config }
-    'TestCases'       { New-TestCasesDocument -Data $config }
+    'BugTicket'         { New-BugTicketDocument -Data $config }
+    'TestProtokoll'     { New-TestProtokollDocument -Data $config }
+    'Lösungskonzept'    { New-LösungskonzeptDocument -Data $config }
+    'AnalyseBericht'    { New-AnalyseBerichtDocument -Data $config }
+    'TestCases'         { New-TestCasesDocument -Data $config }
+    'QTStageProtokoll'  { New-QTStageProtokollDocument -Data $config }
     default {
         Write-Error "Unbekannter Template-Typ: $Template"
         exit 1

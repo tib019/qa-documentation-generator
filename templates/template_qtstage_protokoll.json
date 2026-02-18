@@ -1,0 +1,101 @@
+{
+  "_comment": "Template für QT@Stage Testprotokoll - Umfassendes Stage-Testing mit hierarchischen Tests",
+  "Titel": "[TITEL_HIER - z.B. '1.3.5 Stage 10.02.2026']",
+  "Version": "[VERSION_HIER - z.B. '1.3.5 Stage']",
+  "Projekt": "[PROJEKT_HIER - z.B. 'DTEFS']",
+  "Datum": "[DATUM_HIER - z.B. '10.02.2026']",
+  "Tester": "[TESTER_NAME_HIER - z.B. 'Tobias Buß']",
+  "ServiceAccountID": "[SERVICE_ACCOUNT_ID_HIER - z.B. '0e1ce1ea-b326-45d4-83c1-34e67ea95127' oder leer lassen]",
+  "StartZeit": "[START_ZEIT_HIER - z.B. '08:30']",
+  "EndeZeit": "[ENDE_ZEIT_HIER - z.B. '18:30']",
+  "Zeitzone": "[ZEITZONE_HIER - z.B. 'MEZ + DST']",
+  "TestAccounts": [
+    "[TEST_ACCOUNT_1 - z.B. 'test+20261002-1@hosenso.cloud']",
+    "[TEST_ACCOUNT_2 - z.B. 'test+20261002-2@hosenso.cloud']",
+    "[TEST_ACCOUNT_3 - z.B. 'test+20261002-3@hosenso.cloud']"
+  ],
+  "Geräte": [
+    {
+      "ID": "[GERÄTE_ID_1 - z.B. '01KAK3E2E2Q3CCERKSY25BZVWH']",
+      "Typ": "[TYP - z.B. 'Box', 'Mobile', 'Desktop']",
+      "Plattform": "[PLATTFORM_SYMBOL - z.B. '🔌', '📱', '🖥️']",
+      "Name": "[GERÄTE_NAME - z.B. 'LAPTOP-P16V' oder leer]",
+      "Details": "[DETAILS - z.B. 'AMD Ryzen 9 PRO, 64GB RAM, Windows 11' oder leer]"
+    },
+    {
+      "ID": "[GERÄTE_ID_2]",
+      "Typ": "[TYP]",
+      "Plattform": "[PLATTFORM_SYMBOL]",
+      "Name": "[GERÄTE_NAME]",
+      "Details": "[DETAILS]"
+    }
+  ],
+  "Kategorien": [
+    {
+      "Nummer": "1",
+      "Titel": "[KATEGORIE_TITEL_1 - z.B. 'Genereller Start']",
+      "Beschreibung": "[OPTIONAL: Beschreibung der Kategorie]",
+      "Tests": [
+        {
+          "ID": "[TEST_ID - z.B. 'GS-001']",
+          "Testfall": "[TESTFALL_BESCHREIBUNG - z.B. 'Start der App (Box): Startet App fehlerfrei?']",
+          "Plattformen": ["[PLATTFORM_1 - z.B. '🔌']", "[PLATTFORM_2 - z.B. '☁️']"],
+          "Anforderung": "[ANFORDERUNG - z.B. '🧪' für mindestens einmal oder leer]",
+          "Status": "[STATUS - z.B. '✅', '❌', '⚠️', 'ℹ️', '[]']",
+          "Bemerkung": "[OPTIONAL: Bemerkung zum Test]",
+          "BugID": "[OPTIONAL: Bug-ID - z.B. '#3926']",
+          "UIScreen": "[OPTIONAL: UI-Screen - z.B. '/authentication/challenge']"
+        },
+        {
+          "ID": "[TEST_ID]",
+          "Testfall": "[TESTFALL_BESCHREIBUNG]",
+          "Plattformen": ["[PLATTFORM]"],
+          "Anforderung": "[ANFORDERUNG]",
+          "Status": "[STATUS]",
+          "Bemerkung": "[BEMERKUNG]",
+          "BugID": "[BUG_ID]",
+          "UIScreen": "[UI_SCREEN]"
+        }
+      ]
+    },
+    {
+      "Nummer": "2",
+      "Titel": "[KATEGORIE_TITEL_2 - z.B. 'Authentifizierungsbildschirm']",
+      "Beschreibung": "[OPTIONAL: z.B. 'UI: /authentication/challenge']",
+      "Tests": [
+        {
+          "ID": "[TEST_ID]",
+          "Testfall": "[TESTFALL_BESCHREIBUNG]",
+          "Plattformen": ["[PLATTFORM]"],
+          "Anforderung": "[ANFORDERUNG]",
+          "Status": "[STATUS]",
+          "Bemerkung": "[BEMERKUNG]",
+          "BugID": "[BUG_ID]",
+          "UIScreen": "[UI_SCREEN]"
+        }
+      ]
+    }
+  ],
+  "BlockierteTests": [
+    {
+      "Testfall": "[BLOCKIERTER_TESTFALL - z.B. 'Nutzung des externen Authentifizierungsanbieters Microsoft']",
+      "Grund": "[GRUND - z.B. 'Funktion nicht verfügbar in aktueller Version']",
+      "Plattformen": ["[PLATTFORM_1]", "[PLATTFORM_2]"]
+    }
+  ],
+  "Statistik": {
+    "Gesamt": "[ANZAHL_GESAMT - z.B. 50]",
+    "Erfolgreich": "[ANZAHL_ERFOLGREICH - z.B. 40]",
+    "Fehlgeschlagen": "[ANZAHL_FEHLGESCHLAGEN - z.B. 0]",
+    "Optimierungspotential": "[ANZAHL_OPTIMIERUNG - z.B. 1]",
+    "FAQ_Bedarf": "[ANZAHL_FAQ - z.B. 0]",
+    "Blockiert": "[ANZAHL_BLOCKIERT - z.B. 6]",
+    "Erfolgsrate": "[ERFOLGSRATE_PROZENT - z.B. 95]"
+  },
+  "Empfehlungen": [
+    "[EMPFEHLUNG_1 - z.B. 'Service Account ID nachtragen']",
+    "[EMPFEHLUNG_2 - z.B. 'Bug-Ticket für externe Authentifizierung erstellen']",
+    "[EMPFEHLUNG_3 - z.B. 'macOS und Tizen Tests durchführen']"
+  ],
+  "Bemerkungen": "[FREITEXT_BEMERKUNGEN - z.B. 'Testprotokoll für Stage 1.3.5 vom 10.02.2026. Alle kritischen Tests erfolgreich.']"
+}

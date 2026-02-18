@@ -29,6 +29,7 @@ A PowerShell-based tool that automatically generates professional QA documentati
 |------|-------------|----------|
 | **Bug Ticket** | Systematic bug documentation | Track and document bugs with all relevant details |
 | **Test Protocol** | Comprehensive test reports | Document test results, statistics, and findings |
+| **QT Stage Protocol** | Comprehensive stage test protocols | Detailed stage testing with hierarchical structure, platform-specific tests |
 | **Solution Concept** | Structured solution proposals | Present technical solutions with analysis |
 | **Analysis Report** | Professional analysis documents | Document findings and recommendations |
 | **Test Cases** | Organized test case collections | Structure and document test scenarios |
@@ -81,6 +82,9 @@ For the easiest experience, use the interactive menu:
 
 # Generate a test protocol
 .\Generate-QADocument.ps1 -ConfigFile "my_test.json" -Template "TestProtokoll"
+
+# Generate a QT Stage protocol
+.\Generate-QADocument.ps1 -ConfigFile "my_stage_test.json" -Template "QTStageProtokoll"
 
 # Specify output path
 .\Generate-QADocument.ps1 -ConfigFile "bug.json" -Template "BugTicket" -OutputPath "output\bug_3690.md"
@@ -305,6 +309,7 @@ Wenn du zusätzlich ein PDF brauchst, kannst du Pandoc verwenden:
 - **[Complete Guide (German)](docs/ANLEITUNG_Windows11.md)** - Step-by-step installation and usage
 - **[Usage Examples](docs/USAGE.md)** - Detailed examples for all document types
 - **[Template Reference](docs/TEMPLATES.md)** - JSON structure for each template
+- **[QT Stage Protocol Guide](docs/QTSTAGE_PROTOKOLL.md)** - Comprehensive guide for stage test protocols
 
 ---
 
