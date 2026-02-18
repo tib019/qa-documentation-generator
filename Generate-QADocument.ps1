@@ -179,13 +179,17 @@ function Test-QAConfig {
             # Test-Kategorien
             if (-not (Has-Prop $Data 'TestKategorien')) { Add-Err "QTStageProtokoll: Pflichtfeld fehlt: 'TestKategorien'." }
             elseif (-not (Is-Array $Data.TestKategorien)) { Add-Err "QTStageProtokoll: 'TestKategorien' muss ein Array sein." }
-            # Test-Accounts (optional)
-            if (Has-Prop $Data 'TestAccounts' -and -not (Is-Array $Data.TestAccounts)) {
-                Add-Err "QTStageProtokoll: 'TestAccounts' muss ein Array sein."
+            # Test-Accounts (optional) - nur prüfen wenn Property existiert
+            if (($Data.PSObject.Properties.Name -contains 'TestAccounts') -and ($null -ne $Data.TestAccounts)) {
+                if (-not (Is-Array $Data.TestAccounts)) {
+                    Add-Err "QTStageProtokoll: 'TestAccounts' muss ein Array sein."
+                }
             }
-            # Blockierte Tests (optional)
-            if (Has-Prop $Data 'BlockierteTests' -and -not (Is-Array $Data.BlockierteTests)) {
-                Add-Err "QTStageProtokoll: 'BlockierteTests' muss ein Array sein."
+            # Blockierte Tests (optional) - nur prüfen wenn Property existiert
+            if (($Data.PSObject.Properties.Name -contains 'BlockierteTests') -and ($null -ne $Data.BlockierteTests)) {
+                if (-not (Is-Array $Data.BlockierteTests)) {
+                    Add-Err "QTStageProtokoll: 'BlockierteTests' muss ein Array sein."
+                }
             }
         }
     }
