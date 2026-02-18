@@ -16,6 +16,11 @@ pool:
 
 variables:
   outputPath: '$(Build.ArtifactStagingDirectory)/generated-docs'
+  # Wiki Upload (Phase 3) - bitte in Azure DevOps als Variablen setzen/überschreiben
+  adoOrganization: 'YOUR_ORG'
+  adoProject: 'YOUR_PROJECT'
+  adoWiki: 'YOUR_PROJECT.wiki'
+  wikiBasePath: '/QA-Documentation'
 
 stages:
   - stage: GenerateDocumentation
@@ -136,17 +141,24 @@ stages:
               downloadPath: '$(System.ArtifactsDirectory)'
 
           - task: PowerShell@2
-            displayName: 'Prepare Wiki Upload'
+            displayName: 'Upload to Azure DevOps Wiki (REST API)'
             inputs:
               targetType: 'inline'
               script: |
-                Write-Host "Preparing documents for Wiki upload..."
-                Write-Host "Note: Wiki upload requires Azure DevOps Wiki Git repository configured"
-                Write-Host "Documents are available in artifacts for manual upload"
-                
-                # Beispiel für Wiki-Upload (erfordert Wiki Git Repository)
-                # git clone https://dev.azure.com/YOUR_ORG/YOUR_PROJECT/_git/YOUR_PROJECT.wiki
-                # Copy-Item "$(System.ArtifactsDirectory)/qa-documentation/*.md" -Destination "./YOUR_PROJECT.wiki/"
-                # git add .
-                # git commit -m "Auto-generated QA documentation from Build $(Build.BuildNumber)"
-                # git push
+                Write-Host "Uploading generated Markdown to Azure DevOps Wiki..."
+                if (-not $env:ADO_PAT) {
+                  throw "ADO_PAT fehlt. Bitte in der Pipeline als Secret Variable hinterlegen."
+                }
+                $src = "$(System.ArtifactsDirectory)\qa-documentation"
+                if (-not (Test-Path $src)) {
+                  throw "Artifacts Pfad nicht gefunden: $src"
+                }
+                .\Publish-AdoWiki.ps1 `
+                  -Organization "$(adoOrganization)" `
+                  -Project "$(adoProject)" `
+                  -Wiki "$(adoWiki)" `
+                  -Pat $env:ADO_PAT `
+                  -SourceDirectory $src `
+                  -BasePath "$(wikiBasePath)"
+            env:
+              ADO_PAT: $(ADO_PAT)

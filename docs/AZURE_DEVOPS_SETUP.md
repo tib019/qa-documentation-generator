@@ -116,31 +116,36 @@ git push
 
 ### Wiki-Upload aktivieren
 
-1. **Wiki Git Repository klonen:**
-   ```bash
-   git clone https://dev.azure.com/YOUR_ORG/YOUR_PROJECT/_git/YOUR_PROJECT.wiki
-   ```
+Ab Phase 3 kann der Wiki-Upload **direkt per REST API** erfolgen (ohne Wiki-Git-Repo-Clone).
 
-2. **Pipeline anpassen:**
-   Bearbeiten Sie `azure-pipelines.yml`, Stage `UploadToWiki`:
-   ```yaml
-   - task: PowerShell@2
-     displayName: 'Upload to Wiki'
-     inputs:
-       targetType: 'inline'
-       script: |
-         git clone https://dev.azure.com/YOUR_ORG/YOUR_PROJECT/_git/YOUR_PROJECT.wiki
-         Copy-Item "$(System.ArtifactsDirectory)/qa-documentation/*.md" -Destination "./YOUR_PROJECT.wiki/QA-Documentation/"
-         cd YOUR_PROJECT.wiki
-         git add .
-         git commit -m "Auto-generated QA documentation from Build $(Build.BuildNumber)"
-         git push
-   ```
+#### 1) PAT (Personal Access Token) erstellen
 
-3. **Service Connection erstellen:**
-   - Project Settings → Service connections
-   - New service connection → Azure Repos/Team Foundation Server
-   - Authentifizierung konfigurieren
+1. Azure DevOps → User Settings → **Personal access tokens**
+2. **New Token**
+3. Scopes:
+   - **Wiki (Read & write)**
+4. Token kopieren (wird nur einmal angezeigt)
+
+#### 2) Pipeline-Variablen setzen (Azure DevOps UI)
+
+In deiner Pipeline unter **Variables** hinzufügen:
+
+- `ADO_PAT` (**secret**): dein PAT
+- `adoOrganization`: z.B. `myorg`
+- `adoProject`: z.B. `MyProject`
+- `adoWiki`: z.B. `MyProject.wiki` (oder Wiki-ID)
+- `wikiBasePath`: z.B. `/QA-Documentation`
+
+> Hinweis: Diese Werte sind als Default-Placeholders in `azure-pipelines.yml` vorhanden, sollten aber in Azure DevOps überschrieben werden.
+
+#### 3) Wiki-Upload Stage aktiv nutzen
+
+Die Stage `UploadToWiki` in `azure-pipelines.yml` lädt die Artefakte nach der Generierung ins Wiki hoch:
+
+- Quelle: `$(System.ArtifactsDirectory)/qa-documentation/*.md` (rekursiv)
+- Ziel: `wikiBasePath` im Azure DevOps Wiki
+
+Du musst dafür nur sicherstellen, dass `ADO_PAT` gesetzt ist.
 
 ---
 
