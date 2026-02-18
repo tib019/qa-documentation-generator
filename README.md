@@ -275,6 +275,31 @@ echo Done!
 
 ---
 
+## ✅ Tests (Pester)
+
+Du kannst die Basis-Tests (Smoke + Markdown-Strukturprüfung) so ausführen:
+
+```powershell
+.\tests\Run-Tests.ps1
+```
+
+Hinweis: Das Script installiert bei Bedarf Pester (>= 5) im `CurrentUser` Scope.
+
+---
+
+## 📄 PDF Export (Pandoc)
+
+Wenn du zusätzlich ein PDF brauchst, kannst du Pandoc verwenden:
+
+1. Pandoc installieren: `https://pandoc.org/installing.html`
+2. PDF erzeugen:
+
+```powershell
+.\Export-QADocumentPdf.ps1 -ConfigFile ".\examples\beispiel_test_protokoll.json" -Template "TestProtokoll" -OutputPdfPath ".\output\beispiel_test_protokoll.pdf"
+```
+
+---
+
 ## 📖 Documentation
 
 - **[Complete Guide (German)](docs/ANLEITUNG_Windows11.md)** - Step-by-step installation and usage

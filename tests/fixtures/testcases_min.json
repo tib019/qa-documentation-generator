@@ -1,0 +1,42 @@
+{
+  "Titel": "Mini Test Case Katalog",
+  "Projekt": "Demo Projekt",
+  "Datum": "13.02.2026",
+  "Ersteller": "QA",
+  "Übersicht": "Kleiner Katalog für Snapshot-Tests.",
+  "Kategorien": [
+    {
+      "Nummer": "1",
+      "Titel": "Login",
+      "Beschreibung": "Grundlegende Authentifizierung.",
+      "TestCases": [
+        {
+          "ID": "TC-MIN-001",
+          "Szenario": "Login mit gültigen Daten",
+          "ErwartetesVerhalten": "Login ist erfolgreich und der User wird weitergeleitet.",
+          "Priorität": "Hoch"
+        },
+        {
+          "ID": "TC-MIN-002",
+          "Szenario": "Login mit ungültigen Daten",
+          "ErwartetesVerhalten": "Login wird abgelehnt und eine Fehlermeldung wird angezeigt.",
+          "Priorität": "Mittel"
+        }
+      ]
+    }
+  ],
+  "TechnischeUmsetzung": "Snapshot-Test Fixture.",
+  "TestDurchführung": "Snapshot-Test Fixture.",
+  "Priorisierung": {
+    "Kritisch": [
+      "TC-MIN-001"
+    ],
+    "Wichtig": [
+      "TC-MIN-002"
+    ]
+  },
+  "Erfolgskriterien": [
+    "- Snapshots bleiben stabil."
+  ]
+}
+

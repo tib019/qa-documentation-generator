@@ -45,7 +45,7 @@ stages:
                 
                 foreach ($file in $jsonFiles) {
                   Write-Host "Processing: $($file.Name)"
-                  .\Generate-QADocument.ps1 -ConfigFile $file.FullName -Template "BugTicket" -OutputPath "$(outputPath)\$($file.BaseName).md"
+                  .\Generate-QADocument.ps1 -ConfigFile $file.FullName -Template "BugTicket" -OutputPath "$(outputPath)\$($file.BaseName).md" -NoPrompt
                 }
                 
                 Write-Host "Bug tickets generated successfully"
@@ -60,7 +60,7 @@ stages:
                 
                 foreach ($file in $jsonFiles) {
                   Write-Host "Processing: $($file.Name)"
-                  .\Generate-QADocument.ps1 -ConfigFile $file.FullName -Template "TestProtokoll" -OutputPath "$(outputPath)\$($file.BaseName).md"
+                  .\Generate-QADocument.ps1 -ConfigFile $file.FullName -Template "TestProtokoll" -OutputPath "$(outputPath)\$($file.BaseName).md" -NoPrompt
                 }
                 
                 Write-Host "Test protocols generated successfully"

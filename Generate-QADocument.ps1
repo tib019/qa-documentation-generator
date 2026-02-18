@@ -47,7 +47,10 @@ param(
     [string]$Template,
     
     [Parameter(Mandatory=$false, HelpMessage="Ausgabepfad für Markdown-Dokument")]
-    [string]$OutputPath = ""
+    [string]$OutputPath = "",
+
+    [Parameter(Mandatory=$false, HelpMessage="Keine interaktiven Prompts (CI/Automation)")]
+    [switch]$NoPrompt
 )
 
 # Funktion: JSON-Daten laden
@@ -61,9 +64,118 @@ function Get-ConfigData {
         return $data
     }
     catch {
-        Write-Error "Fehler beim Laden der Konfigurationsdatei: $_"
-        exit 1
+        throw "Fehler beim Laden der Konfigurationsdatei '$Path': $($_.Exception.Message)"
     }
+}
+
+function Test-QAConfig {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory = $true)]
+        $Data,
+
+        [Parameter(Mandatory = $true)]
+        [ValidateSet('BugTicket', 'TestProtokoll', 'Lösungskonzept', 'AnalyseBericht', 'TestCases')]
+        [string]$Template
+    )
+
+    $errors = New-Object System.Collections.Generic.List[string]
+
+    function Add-Err([string]$Msg) { [void]$errors.Add($Msg) }
+    function Has-Prop($Obj, [string]$Name) { $null -ne $Obj -and ($Obj.PSObject.Properties.Name -contains $Name) -and $null -ne $Obj.$Name }
+    function Is-Array($Val) { $null -ne $Val -and ($Val -is [System.Collections.IEnumerable]) -and -not ($Val -is [string]) }
+
+    if ($null -eq $Data) {
+        Add-Err "JSON konnte nicht gelesen werden oder ist leer."
+        throw ($errors -join "`n")
+    }
+
+    switch ($Template) {
+        'BugTicket' {
+            foreach ($p in @('Titel','BugID','Datum','Ersteller','Schweregrad','Status','Zusammenfassung','Beschreibung','ErwartetesVerhalten','TatsächlichesVerhalten','MöglicheUrsache','Lösungsvorschlag')) {
+                if (-not (Has-Prop $Data $p)) { Add-Err "BugTicket: Pflichtfeld fehlt oder ist leer: '$p'." }
+            }
+            foreach ($a in @('Plattformen','Reproduktionsschritte','Screenshots','VerwandteTickets')) {
+                if (-not (Has-Prop $Data $a)) { Add-Err "BugTicket: Pflichtfeld fehlt: '$a'." }
+                elseif (-not (Is-Array $Data.$a)) { Add-Err "BugTicket: '$a' muss ein Array sein." }
+            }
+            if (-not (Has-Prop $Data 'TechnischeDetails')) { Add-Err "BugTicket: Pflichtfeld fehlt: 'TechnischeDetails'." }
+            else {
+                foreach ($tp in @('Version','OS','Gerät')) {
+                    if (-not (Has-Prop $Data.TechnischeDetails $tp)) { Add-Err "BugTicket: TechnischeDetails.$tp fehlt oder ist leer." }
+                }
+            }
+        }
+        'TestProtokoll' {
+            foreach ($p in @('Titel','Version','Datum','Tester','Testumgebung','TestTyp','Dauer','Status','Browser','OS','Gerät','Bemerkungen')) {
+                if (-not (Has-Prop $Data $p)) { Add-Err "TestProtokoll: Pflichtfeld fehlt oder ist leer: '$p'." }
+            }
+            foreach ($a in @('Testziele','Tests','GefundeneBugs','Empfehlungen')) {
+                if (-not (Has-Prop $Data $a)) { Add-Err "TestProtokoll: Pflichtfeld fehlt: '$a'." }
+                elseif (-not (Is-Array $Data.$a)) { Add-Err "TestProtokoll: '$a' muss ein Array sein." }
+            }
+            if (Has-Prop $Data 'Tests' -and (Is-Array $Data.Tests)) {
+                $idx = 0
+                foreach ($t in $Data.Tests) {
+                    $idx++
+                    foreach ($tp in @('ID','Testfall','Status','Bemerkung')) {
+                        if (-not (Has-Prop $t $tp)) { Add-Err "TestProtokoll: Tests[$idx].$tp fehlt oder ist leer." }
+                    }
+                }
+            }
+            if (-not (Has-Prop $Data 'Statistik')) { Add-Err "TestProtokoll: Pflichtfeld fehlt: 'Statistik'." }
+            else {
+                foreach ($sp in @('Gesamt','Erfolgreich','Fehlgeschlagen','Übersprungen','Erfolgsrate')) {
+                    if (-not (Has-Prop $Data.Statistik $sp)) { Add-Err "TestProtokoll: Statistik.$sp fehlt oder ist leer." }
+                }
+            }
+        }
+        'TestCases' {
+            foreach ($p in @('Titel','Projekt','Datum','Ersteller','Übersicht','TechnischeUmsetzung','TestDurchführung')) {
+                if (-not (Has-Prop $Data $p)) { Add-Err "TestCases: Pflichtfeld fehlt oder ist leer: '$p'." }
+            }
+            foreach ($a in @('Kategorien','Erfolgskriterien')) {
+                if (-not (Has-Prop $Data $a)) { Add-Err "TestCases: Pflichtfeld fehlt: '$a'." }
+                elseif (-not (Is-Array $Data.$a)) { Add-Err "TestCases: '$a' muss ein Array sein." }
+            }
+            if (-not (Has-Prop $Data 'Priorisierung')) { Add-Err "TestCases: Pflichtfeld fehlt: 'Priorisierung'." }
+            if (Has-Prop $Data 'Kategorien' -and (Is-Array $Data.Kategorien)) {
+                $kidx = 0
+                foreach ($k in $Data.Kategorien) {
+                    $kidx++
+                    foreach ($kp in @('Nummer','Titel','Beschreibung','TestCases')) {
+                        if (-not (Has-Prop $k $kp)) { Add-Err "TestCases: Kategorien[$kidx].$kp fehlt oder ist leer." }
+                    }
+                    if (Has-Prop $k 'TestCases' -and -not (Is-Array $k.TestCases)) { Add-Err "TestCases: Kategorien[$kidx].TestCases muss ein Array sein." }
+                    if (Has-Prop $k 'TestCases' -and (Is-Array $k.TestCases)) {
+                        $tcidx = 0
+                        foreach ($tc in $k.TestCases) {
+                            $tcidx++
+                            foreach ($tcp in @('ID','Szenario','ErwartetesVerhalten','Priorität')) {
+                                if (-not (Has-Prop $tc $tcp)) { Add-Err "TestCases: Kategorien[$kidx].TestCases[$tcidx].$tcp fehlt oder ist leer." }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        'Lösungskonzept' {
+            foreach ($p in @('Titel','Empfänger','Problem','Datum','Ersteller','Problemanalyse','RootCause','Lösungen','Empfehlung','NächsteSchritte')) {
+                if (-not (Has-Prop $Data $p)) { Add-Err "Lösungskonzept: Pflichtfeld fehlt oder ist leer: '$p'." }
+            }
+        }
+        'AnalyseBericht' {
+            foreach ($p in @('Titel','Datum','Ersteller','Bereich','ExecutiveSummary','Analyseziele','Methodik','Ergebnisse','Empfehlungen','Priorisierung','Fazit')) {
+                if (-not (Has-Prop $Data $p)) { Add-Err "AnalyseBericht: Pflichtfeld fehlt oder ist leer: '$p'." }
+            }
+        }
+    }
+
+    if ($errors.Count -gt 0) {
+        throw ("Ungültige Konfiguration für Template '$Template':`n" + ($errors -join "`n"))
+    }
+
+    return $true
 }
 
 # Funktion: Bug-Ticket generieren
@@ -465,7 +577,22 @@ Write-Host ""
 
 # Konfigurationsdaten laden
 Write-Host "Lade Konfigurationsdaten..." -ForegroundColor Yellow
-$config = Get-ConfigData -Path $ConfigFile
+try {
+    $config = Get-ConfigData -Path $ConfigFile
+}
+catch {
+    Write-Error $_
+    exit 1
+}
+
+# Validierung
+try {
+    Test-QAConfig -Data $config -Template $Template | Out-Null
+}
+catch {
+    Write-Error $_
+    exit 1
+}
 
 # Dokument generieren basierend auf Template
 Write-Host "Generiere $Template Dokument..." -ForegroundColor Yellow
@@ -503,10 +630,12 @@ try {
     Write-Host "  - Zeichen: $chars" -ForegroundColor White
     Write-Host ""
     
-    # Öffnen-Option anbieten
-    $open = Read-Host "Möchten Sie das Dokument öffnen? (J/N)"
-    if ($open -eq 'J' -or $open -eq 'j') {
-        Start-Process $OutputPath
+    if (-not $NoPrompt) {
+        # Öffnen-Option anbieten
+        $open = Read-Host "Möchten Sie das Dokument öffnen? (J/N)"
+        if ($open -eq 'J' -or $open -eq 'j') {
+            Start-Process $OutputPath
+        }
     }
 }
 catch {
