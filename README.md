@@ -373,7 +373,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **QA Engineer** | Passionate about test automation and quality assurance
 
 - GitHub: [@tibo47-161](https://github.com/tibo47-161)
-- Email: tobi196183@gmail.com
+- Email: tobias.buss.dev@gmail.com
 
 ---
 
