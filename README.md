@@ -13,6 +13,16 @@
 
 A PowerShell-based tool that automatically generates professional QA documentation in Markdown format. Simply input your data in a JSON file, and the script creates a fully formatted, professional document.
 
+> **⚡ 80% time savings** — Documentation time reduced from **15 minutes to 2 minutes** per document. Fully local, GDPR-compliant, Azure DevOps-ready.
+
+| Kennzahl | Wert |
+|---|---|
+| **Zeitersparnis** | ⚡ 80% (15 min → 2 min) |
+| **Dokumenttypen** | 6 (Bug, Test, QT Stage, Solution, Analysis, Test Cases) |
+| **CI/CD-Integration** | Azure DevOps Pipeline |
+| **Datenschutz** | DSGVO-konform (100% lokal) |
+| **Plattform** | Windows 10/11, PowerShell 5.1+ |
+
 **Key Features:**
 - ⚡ **80% time savings** - 15 minutes → 2 minutes per document
 - 📋 **Consistent formatting** - Always professional
