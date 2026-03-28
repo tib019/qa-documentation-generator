@@ -4,12 +4,12 @@
 
 Das **QT Stage Protokoll** ist ein umfassendes Test-Protokoll-Format für Stage-Deployments, das speziell für die Anforderungen der DTEFS-QA entwickelt wurde. Es erweitert das Standard-TestProtokoll um:
 
-- 📊 **Erweiterte Metadaten** (Service Account, Geräte-IDs, Zeitstempel)
-- 🎯 **Hierarchische Test-Struktur** (Kategorien → UI-Screens → Tests)
-- 🔌 **Plattform-spezifische Tests** (Backend, Cloud, Mobile, Desktop)
-- 👤 **Test-Accounts-Dokumentation**
-- 🚫 **Blockierte Tests mit Ticket-Referenzen**
-- ✅ **Symbol-System** für Status und Plattformen
+- **Erweiterte Metadaten** (Service Account, Geräte-IDs, Zeitstempel)
+- **Hierarchische Test-Struktur** (Kategorien → UI-Screens → Tests)
+- **Plattform-spezifische Tests** (Backend, Cloud, Mobile, Desktop)
+- **Test-Accounts-Dokumentation**
+- **Blockierte Tests mit Ticket-Referenzen**
+- **Symbol-System** für Status und Plattformen
 
 ---
 
@@ -70,12 +70,12 @@ cp examples/beispiel_qtstage_protokoll.json mein_test.json
 
 Das Script generiert ein professionelles Markdown-Dokument mit:
 
-- ✅ Vollständigen Metadaten
-- 📊 Hierarchisch strukturierten Tests
-- 🔌 Plattform-spezifischen Tests mit Symbolen
-- 👤 Test-Accounts-Übersicht
-- 🚫 Blockierte Tests mit Ticket-Links
-- 📈 Zusammenfassung mit Statistiken
+- Vollständigen Metadaten
+- Hierarchisch strukturierten Tests
+- Plattform-spezifischen Tests mit Symbolen
+- Test-Accounts-Übersicht
+- Blockierte Tests mit Ticket-Links
+- Zusammenfassung mit Statistiken
 
 ---
 
@@ -89,7 +89,7 @@ Für Tests, die UI-spezifisch sind:
 {
   "TestKategorien": [
     {
-      "Kategorie": "🔐 Authentifizierung & Autorisierung",
+ "Kategorie": " Authentifizierung & Autorisierung",
       "UIScreens": [
         {
           "Screen": "Login-Screen",
@@ -115,7 +115,7 @@ Für allgemeine Tests ohne spezifischen Screen:
 {
   "TestKategorien": [
     {
-      "Kategorie": "🔔 Benachrichtigungen",
+ "Kategorie": " Benachrichtigungen",
       "Tests": [
         {
           "Test": "Push-Benachrichtigungen empfangen",
@@ -136,10 +136,10 @@ Das Template verwendet folgende Status-Symbole:
 
 | Status | Symbol | Bedeutung |
 |--------|--------|-----------|
-| `Bestanden` | ✅ | Test erfolgreich durchgeführt |
-| `Warnung` | ⚠️ | Test bestanden, aber mit Auffälligkeiten |
+| `Bestanden` | | Test erfolgreich durchgeführt |
+| `Warnung` | ️ | Test bestanden, aber mit Auffälligkeiten |
 | `Info` | ℹ️ | Informative Bemerkung |
-| `Fehlgeschlagen` | ❌ | Test fehlgeschlagen |
+| `Fehlgeschlagen` | | Test fehlgeschlagen |
 
 ---
 
@@ -149,10 +149,10 @@ Für plattform-spezifische Tests:
 
 | Plattform | Symbol | Verwendung |
 |-----------|--------|------------|
-| `Backend` | 🔌 | Backend/API-Tests |
-| `Cloud` | ☁️ | Cloud-Services (Azure, AWS, etc.) |
-| `Mobile` | 📱 | Mobile Apps (iOS, Android) |
-| `Desktop` | 🖥️ | Desktop/Browser-Tests |
+| `Backend` | | Backend/API-Tests |
+| `Cloud` | ️ | Cloud-Services (Azure, AWS, etc.) |
+| `Mobile` | | Mobile Apps (iOS, Android) |
+| `Desktop` | ️ | Desktop/Browser-Tests |
 
 ---
 
@@ -228,11 +228,11 @@ Die Zusammenfassung sollte enthalten:
 **Gesamt:** 42 Tests durchgeführt
 
 **Ergebnis:**
-- ✅ Bestanden: 35 (83%)
-- ⚠️ Warnung: 5 (12%)
-- ❌ Fehlgeschlagen: 1 (2%)
+- Bestanden: 35 (83%)
+- ️ Warnung: 5 (12%)
+- Fehlgeschlagen: 1 (2%)
 - ℹ️ Info: 1 (2%)
-- 🚫 Blockiert: 2
+- Blockiert: 2
 
 **Kritische Probleme:**
 - Bug #3926: Datumsfeld-Validierung fehlerhaft (Priorität: Hoch)
@@ -320,11 +320,11 @@ cp templates/template_qtstage_protokoll.json stage_1.3.5_test.json
 
 Das Script validiert automatisch:
 
-- ✅ Pflichtfelder (Titel, Version, Datum, Tester, etc.)
-- ✅ Geräte-IDs Objekt vorhanden
-- ✅ TestKategorien ist Array
-- ✅ TestAccounts ist Array (falls vorhanden)
-- ✅ BlockierteTests ist Array (falls vorhanden)
+- Pflichtfelder (Titel, Version, Datum, Tester, etc.)
+- Geräte-IDs Objekt vorhanden
+- TestKategorien ist Array
+- TestAccounts ist Array (falls vorhanden)
+- BlockierteTests ist Array (falls vorhanden)
 
 Bei fehlenden Pflichtfeldern wird eine detaillierte Fehlermeldung angezeigt.
 

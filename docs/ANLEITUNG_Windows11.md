@@ -4,26 +4,26 @@
 
 ---
 
-## 🎯 Was macht das Tool?
+## Was macht das Tool?
 
 Dieses PowerShell-Script generiert **automatisch professionelle QA-Dokumente** im Markdown-Format. Sie geben nur Ihre Daten in eine JSON-Datei ein, das Script erstellt daraus ein vollständiges, formatiertes Dokument.
 
 **Unterstützte Dokumenttypen:**
-- ✅ Bug-Tickets
-- ✅ Test-Protokolle
-- ✅ Lösungskonzepte
-- ✅ Analyse-Berichte
-- ✅ Test Cases
+- Bug-Tickets
+- Test-Protokolle
+- Lösungskonzepte
+- Analyse-Berichte
+- Test Cases
 
 **Vorteile:**
-- ⚡ Schnell (Sekunden statt Minuten)
-- 📋 Einheitliches Format (immer professionell)
-- 🔄 Reproduzierbar (gleiche Daten = gleiches Dokument)
-- 💾 Versionierbar (JSON + MD in Git)
+- Schnell (Sekunden statt Minuten)
+- Einheitliches Format (immer professionell)
+- Reproduzierbar (gleiche Daten = gleiches Dokument)
+- Versionierbar (JSON + MD in Git)
 
 ---
 
-## 📦 Installation (Windows 11)
+## Installation (Windows 11)
 
 ### Schritt 1: Ordner erstellen
 
@@ -39,11 +39,11 @@ Kopieren Sie folgende Dateien in den Ordner:
 
 ```
 QA-Dokumenten-Generator/
-├── Generate-QADocument.ps1          (Das Haupt-Script)
-├── template_bug_ticket.json         (Leere Vorlage für Bug-Tickets)
-├── beispiel_bug_ticket.json         (Beispiel mit Daten)
-├── beispiel_test_protokoll.json     (Beispiel Test-Protokoll)
-└── ANLEITUNG_Windows11.md           (Diese Anleitung)
+ Generate-QADocument.ps1 (Das Haupt-Script)
+ template_bug_ticket.json (Leere Vorlage für Bug-Tickets)
+ beispiel_bug_ticket.json (Beispiel mit Daten)
+ beispiel_test_protokoll.json (Beispiel Test-Protokoll)
+ ANLEITUNG_Windows11.md (Diese Anleitung)
 ```
 
 ### Schritt 3: PowerShell Execution Policy prüfen (nur beim ersten Mal)
@@ -67,7 +67,7 @@ QA-Dokumenten-Generator/
 
 ---
 
-## 🚀 Verwendung
+## Verwendung
 
 ### Methode 1: Über PowerShell (empfohlen)
 
@@ -121,7 +121,7 @@ pause
 
 ---
 
-## 📝 Eigene Daten eingeben
+## Eigene Daten eingeben
 
 ### Schritt 1: Template kopieren
 
@@ -185,10 +185,10 @@ pause
 ```
 
 **Wichtig:**
-- ✅ Alle Texte in **Anführungszeichen** ("...")
-- ✅ Kommas zwischen Einträgen (aber **nicht** nach dem letzten Eintrag)
-- ✅ Arrays mit eckigen Klammern: `["Eintrag 1", "Eintrag 2"]`
-- ✅ Objekte mit geschweiften Klammern: `{"Key": "Value"}`
+- Alle Texte in **Anführungszeichen** ("...")
+- Kommas zwischen Einträgen (aber **nicht** nach dem letzten Eintrag)
+- Arrays mit eckigen Klammern: `["Eintrag 1", "Eintrag 2"]`
+- Objekte mit geschweiften Klammern: `{"Key": "Value"}`
 
 ### Schritt 4: Dokument generieren
 
@@ -196,11 +196,11 @@ pause
 .\Generate-QADocument.ps1 -ConfigFile "bug_3690.json" -Template "BugTicket"
 ```
 
-Fertig! 🎉
+Fertig!
 
 ---
 
-## 🎨 Verfügbare Templates
+## Verfügbare Templates
 
 ### 1. BugTicket
 **Verwendung:**
@@ -257,7 +257,7 @@ Fertig! 🎉
 
 ---
 
-## 💡 Tipps & Tricks
+## Tipps & Tricks
 
 ### Tipp 1: Ausgabepfad festlegen
 ```powershell
@@ -298,7 +298,7 @@ Wenn keine Fehlermeldung kommt, ist die JSON-Datei korrekt.
 
 ---
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### Problem 1: "Die Datei kann nicht geladen werden"
 **Fehlermeldung:**
@@ -354,7 +354,7 @@ powershell.exe -ExecutionPolicy Bypass -File "Generate-QADocument.ps1" -ConfigFi
 
 ---
 
-## 📊 Workflow-Beispiel
+## Workflow-Beispiel
 
 ### Szenario: Bug gefunden während Testing
 
@@ -384,11 +384,11 @@ Nach: bug_3690_offline_login.json
 - Füge in Azure DevOps Wiki ein
 - Oder: Speichere als Datei und committe in Git
 
-**Zeit gespart:** 15 Minuten → 2 Minuten ⚡
+**Zeit gespart:** 15 Minuten → 2 Minuten
 
 ---
 
-## 🎯 Integration in Ihren Workflow
+## Integration in Ihren Workflow
 
 ### Option 1: Lokale Nutzung
 - JSON-Dateien lokal speichern
@@ -422,44 +422,44 @@ pause
 
 ---
 
-## 📈 Vorteile für Ihre Karriere
+## Vorteile für Ihre Karriere
 
 **Warum dieses Tool wichtig ist:**
 
-1. **Effizienzsteigerung** ⚡
+1. **Effizienzsteigerung**
    - 15 Minuten → 2 Minuten pro Dokument
    - 26 Stunden Testprotokoll → 20 Stunden (6 Stunden gespart)
    - **Messbar:** "Ich habe die Dokumentationszeit um 80% reduziert"
 
-2. **Qualitätsverbesserung** 📋
+2. **Qualitätsverbesserung**
    - Einheitliches Format (keine Fehler)
    - Vollständige Dokumentation (keine vergessenen Felder)
    - Professionelles Erscheinungsbild
 
-3. **Reproduzierbarkeit** 🔄
+3. **Reproduzierbarkeit**
    - Gleiche Daten = gleiches Dokument
    - Versionierbar (JSON + MD in Git)
    - Nachvollziehbar
 
-4. **Skalierbarkeit** 📈
+4. **Skalierbarkeit**
    - 1 Bug-Ticket: 2 Minuten
    - 10 Bug-Tickets: 20 Minuten (statt 150 Minuten)
    - 100 Bug-Tickets: 200 Minuten (statt 1500 Minuten)
 
 **Für Tomas präsentieren:**
-- ✅ "Script-basierte Automation" (kein AI-Buzzword!)
-- ✅ "Systematische Dokumentation"
-- ✅ "Reproduzierbare Prozesse"
-- ✅ "80% Zeitersparnis"
+- "Script-basierte Automation" (kein AI-Buzzword!)
+- "Systematische Dokumentation"
+- "Reproduzierbare Prozesse"
+- "80% Zeitersparnis"
 
 **Für Gehaltsverhandlung:**
-- ✅ "Ich habe ein Tool entwickelt, das 80% der Dokumentationszeit spart"
-- ✅ "Das Team kann das Tool nutzen → Multiplikator-Effekt"
-- ✅ "Messbare Effizienzsteigerung"
+- "Ich habe ein Tool entwickelt, das 80% der Dokumentationszeit spart"
+- "Das Team kann das Tool nutzen → Multiplikator-Effekt"
+- "Messbare Effizienzsteigerung"
 
 ---
 
-## 🚀 Nächste Schritte
+## Nächste Schritte
 
 1. **Heute:**
    - Script testen mit Beispiel-Dateien
@@ -482,7 +482,7 @@ pause
 
 ---
 
-## 📞 Support
+## Support
 
 **Bei Fragen oder Problemen:**
 1. Prüfen Sie die Troubleshooting-Sektion
@@ -503,4 +503,4 @@ pause
 **Datum:** 13.02.2026  
 **Plattform:** Windows 11  
 
-**Viel Erfolg mit Ihrer script-basierten Automation!** 🚀
+**Viel Erfolg mit Ihrer script-basierten Automation!**

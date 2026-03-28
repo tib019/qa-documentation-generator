@@ -1,24 +1,24 @@
 # Git Pull Anleitung - QTStageProtokoll Update
 
-## ✅ Was wurde implementiert?
+## Was wurde implementiert?
 
 Die **QTStageProtokoll**-Funktionalität wurde vollständig implementiert und ist bereit zum Pushen!
 
 ### Neue Dateien:
 
-1. ✅ **templates/template_qtstage_protokoll.json** - JSON-Schema-Template
-2. ✅ **examples/beispiel_qtstage_protokoll.json** - Vollständige Beispiel-Konfiguration
-3. ✅ **docs/QTSTAGE_PROTOKOLL.md** - Umfassende Dokumentation
-4. ✅ **tests/Test-QTStageProtokoll.ps1** - Validierungs-Tests
+1. **templates/template_qtstage_protokoll.json** - JSON-Schema-Template
+2. **examples/beispiel_qtstage_protokoll.json** - Vollständige Beispiel-Konfiguration
+3. **docs/QTSTAGE_PROTOKOLL.md** - Umfassende Dokumentation
+4. **tests/Test-QTStageProtokoll.ps1** - Validierungs-Tests
 
 ### Geänderte Dateien:
 
-1. ✅ **Generate-QADocument.ps1** - Erweitert um QTStageProtokoll-Support
-2. ✅ **README.md** - Aktualisiert mit QTStageProtokoll-Informationen
+1. **Generate-QADocument.ps1** - Erweitert um QTStageProtokoll-Support
+2. **README.md** - Aktualisiert mit QTStageProtokoll-Informationen
 
 ---
 
-## 🚀 Git Push & Pull Anleitung
+## Git Push & Pull Anleitung
 
 ### Schritt 1: Repository-Status prüfen
 
@@ -75,7 +75,7 @@ git log --oneline -1
 
 ---
 
-## 🧪 Funktionalität testen
+## Funktionalität testen
 
 ### Test 1: Beispiel-Dokument generieren
 
@@ -87,9 +87,9 @@ git log --oneline -1
 ```
 
 **Erwartetes Ergebnis:**
-- ✅ Dokument wird erfolgreich generiert
-- ✅ Markdown-Datei enthält alle Abschnitte (Metadaten, Geräte-IDs, Test-Kategorien, etc.)
-- ✅ Symbole werden korrekt angezeigt (✅, ⚠️, ℹ️, ❌, 🔌, ☁️, 📱, 🖥️)
+- Dokument wird erfolgreich generiert
+- Markdown-Datei enthält alle Abschnitte (Metadaten, Geräte-IDs, Test-Kategorien, etc.)
+- Symbole werden korrekt angezeigt (, ️, ℹ️,,, ️,, ️)
 
 ---
 
@@ -104,21 +104,21 @@ git log --oneline -1
 === QTStageProtokoll Tests ===
 
 Test 1: Template-Datei existiert...
-  ✅ PASSED: Template gefunden
+ PASSED: Template gefunden
 Test 2: Beispiel-Konfiguration existiert...
-  ✅ PASSED: Beispiel gefunden
+ PASSED: Beispiel gefunden
 Test 3: Beispiel-Konfiguration ist valides JSON...
-  ✅ PASSED: JSON ist valide
+ PASSED: JSON ist valide
 ...
 Test 12: Plattform-Symbole werden korrekt gemappt...
-  ✅ PASSED: Plattform-Symbole gefunden (4/4)
+ PASSED: Plattform-Symbole gefunden (4/4)
 
 === Alle Tests erfolgreich! ===
 ```
 
 ---
 
-## 📋 Verwendung im Projekt
+## Verwendung im Projekt
 
 ### Eigenes QTStageProtokoll erstellen
 
@@ -140,12 +140,12 @@ Test 12: Plattform-Symbole werden korrekt gemappt...
      -OutputPath "output\stage_1.3.5_protokoll.md"
    ```
 
-4. **Fertig!** 🎉
+4. **Fertig!**
    - Markdown-Dokument ist bereit für Azure DevOps Wiki
 
 ---
 
-## 📖 Dokumentation
+## Dokumentation
 
 Vollständige Dokumentation findest du hier:
 
@@ -155,17 +155,17 @@ notepad "docs\QTSTAGE_PROTOKOLL.md"
 ```
 
 Die Dokumentation enthält:
-- 📋 Template-Struktur und JSON-Schema
-- 🎯 Verwendungsbeispiele
-- ✅ Status- und Plattform-Symbole
-- 🔧 Best Practices
-- 🐛 Troubleshooting
+- Template-Struktur und JSON-Schema
+- Verwendungsbeispiele
+- Status- und Plattform-Symbole
+- Best Practices
+- Troubleshooting
 
 ---
 
-## 🎯 Features des QTStageProtokoll
+## Features des QTStageProtokoll
 
-### ✨ Neue Funktionen:
+### Neue Funktionen:
 
 1. **Erweiterte Metadaten**
    - Tester, Service Account ID
@@ -181,16 +181,16 @@ Die Dokumentation enthält:
    - Oder: Kategorien → Tests (direkt)
 
 4. **Plattform-spezifische Tests**
-   - 🔌 Backend
-   - ☁️ Cloud
-   - 📱 Mobile
-   - 🖥️ Desktop
+ - Backend
+ - ️ Cloud
+ - Mobile
+ - ️ Desktop
 
 5. **Symbol-System**
-   - ✅ Bestanden
-   - ⚠️ Warnung
+ - Bestanden
+ - ️ Warnung
    - ℹ️ Info
-   - ❌ Fehlgeschlagen
+ - Fehlgeschlagen
 
 6. **Test-Accounts**
    - Account, Rolle, Verwendung
@@ -207,7 +207,7 @@ Die Dokumentation enthält:
 
 ---
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### Problem: "Template nicht gefunden"
 
@@ -235,17 +235,17 @@ git pull origin main
 
 ---
 
-## 📞 Support
+## Support
 
 Bei Fragen oder Problemen:
 
-1. 📖 Konsultiere die Dokumentation: `docs\QTSTAGE_PROTOKOLL.md`
-2. 🔍 Überprüfe das Beispiel: `examples\beispiel_qtstage_protokoll.json`
-3. 🧪 Führe Tests aus: `.\tests\Test-QTStageProtokoll.ps1`
+1. Konsultiere die Dokumentation: `docs\QTSTAGE_PROTOKOLL.md`
+2. Überprüfe das Beispiel: `examples\beispiel_qtstage_protokoll.json`
+3. Führe Tests aus: `.\tests\Test-QTStageProtokoll.ps1`
 
 ---
 
-## ✅ Checkliste
+## Checkliste
 
 - [ ] Git Pull ausgeführt
 - [ ] Neue Dateien vorhanden (6 Dateien)
@@ -256,7 +256,7 @@ Bei Fragen oder Problemen:
 
 ---
 
-**Viel Erfolg mit dem neuen QTStageProtokoll-Template!** 🚀
+**Viel Erfolg mit dem neuen QTStageProtokoll-Template!**
 
 **Version:** 1.0  
 **Datum:** 18.02.2026  

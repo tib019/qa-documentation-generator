@@ -6,13 +6,13 @@
 
 ---
 
-## 🎯 Übersicht
+## Übersicht
 
 Kleiner Katalog für Snapshot-Tests.
 
 ---
 
-## 📋 Test Case Kategorien
+## Test Case Kategorien
 
 ### 1. Login
 
@@ -25,19 +25,19 @@ Grundlegende Authentifizierung.
 
 ---
 
-## 🛠️ Technische Umsetzung
+## ️ Technische Umsetzung
 
 Snapshot-Test Fixture.
 
 ---
 
-## 📊 Test-Durchführung & Dokumentation
+## Test-Durchführung & Dokumentation
 
 Snapshot-Test Fixture.
 
 ---
 
-## 🎯 Priorisierung
+## Priorisierung
 
 ### Kritische Tests (sofort durchführen)
 
@@ -49,7 +49,7 @@ TC-MIN-002
 
 ---
 
-## 📈 Erfolgskriterien
+## Erfolgskriterien
 
 - Snapshots bleiben stabil.
 

@@ -7,7 +7,7 @@
 
 ---
 
-## 📋 ÜBERSICHT
+## ÜBERSICHT
 
 Sie werden **5 Prompts** in Cursor verwenden, um das neue Template zu implementieren.
 
@@ -22,7 +22,7 @@ Sie werden **5 Prompts** in Cursor verwenden, um das neue Template zu implementi
 
 ---
 
-## 🚀 PROMPT 1: JSON-Schema für QTStageProtokoll erstellen
+## PROMPT 1: JSON-Schema für QTStageProtokoll erstellen
 
 ### **Datei:** `templates/template_qtstage_protokoll.json`
 
@@ -57,7 +57,7 @@ ANFORDERUNGEN:
    - Array von Geräte-Objekten mit:
      - ID (z.B. "01KAK3E2E2Q3CCERKSY25BZVWH")
      - Typ (z.B. "Box", "Mobile", "Desktop")
-     - Plattform (z.B. "🔌", "📱", "🖥️")
+ - Plattform (z.B. "", "", "️")
      - Name (z.B. "LAPTOP-P16V")
      - Details (z.B. "AMD Ryzen 9 PRO, 64GB RAM, Windows 11")
      - Optional: OS, Browser, Version
@@ -72,9 +72,9 @@ ANFORDERUNGEN:
 5. TEST-OBJEKTE (innerhalb Kategorien):
    - ID (z.B. "GS-001")
      - Testfall (z.B. "Start der App (Box): Startet App fehlerfrei?")
-     - Plattformen (Array, z.B. ["🔌", "☁️"])
-     - Anforderung (z.B. "🧪" für mindestens einmal)
-     - Status (z.B. "✅", "❌", "⚠️", "ℹ️", "[]")
+ - Plattformen (Array, z.B. ["", "️"])
+ - Anforderung (z.B. "" für mindestens einmal)
+ - Status (z.B. "", "", "️", "ℹ️", "[]")
      - Bemerkung (z.B. "Login erfolgreich" oder "Funktioniert generell wie es soll nur auf ios gibts nicht den typischen warnhinweis")
      - BugID (optional, z.B. "#3926")
      - UIScreen (optional, z.B. "/authentication/challenge")
@@ -112,7 +112,7 @@ AUSGABE:
 
 ---
 
-## 🚀 PROMPT 2: PowerShell-Generator erweitern
+## PROMPT 2: PowerShell-Generator erweitern
 
 ### **Datei:** `Generate-QADocument.ps1`
 
@@ -162,28 +162,28 @@ ANFORDERUNGEN:
 
 ---
 
-## 🔧 Symbolvergabe
+## Symbolvergabe
 
-* 🧪 Dieser Test MUSS **_MINDESTENS_** einmal durchgeführt werden
-* ☁️ Cloud
-* 🔌 Box
-* 📱 Mobil
-* 🖥️ Desktop
-* ✅ Erfolgreich
-* ⚠️ Erfolgreich, aber Optimierungspotential
+* Dieser Test MUSS **_MINDESTENS_** einmal durchgeführt werden
+* ️ Cloud
+* Box
+* Mobil
+* ️ Desktop
+* Erfolgreich
+* ️ Erfolgreich, aber Optimierungspotential
 * ℹ️ Erfolgreich, aber FAQ-Bedarf
-* ❌ Nicht erfolgreich
+* Nicht erfolgreich
 
 ---
 
-## 👥 Genutzte Test-Accounts
+## Genutzte Test-Accounts
 
 [Für jeden Account:]
 * [Account-Email]
 
 ---
 
-## 🖥️ IDs der getesteten Geräte
+## ️ IDs der getesteten Geräte
 
 [Für jedes Gerät:]
 * [[ID]] [Plattform-Symbol] ([Typ])
@@ -192,7 +192,7 @@ ANFORDERUNGEN:
 
 ---
 
-## 📋 Tests
+## Tests
 
 [Für jede Kategorie:]
 
@@ -209,7 +209,7 @@ ANFORDERUNGEN:
 
 ---
 
-## 🚫 Blockierte Tests
+## Blockierte Tests
 
 [Falls vorhanden, für jeden blockierten Test:]
 - [Plattform-Symbole] [Testfall]
@@ -217,26 +217,26 @@ ANFORDERUNGEN:
 
 ---
 
-## 📊 Test-Statistik
+## Test-Statistik
 
 **Tests gesamt:** [Gesamt]  
-**Erfolgreich (✅):** [Erfolgreich]  
-**Fehlgeschlagen (❌):** [Fehlgeschlagen]  
-**Optimierungspotential (⚠️):** [Optimierungspotential]  
+**Erfolgreich ():** [Erfolgreich]
+**Fehlgeschlagen ():** [Fehlgeschlagen]
+**Optimierungspotential (️):** [Optimierungspotential]
 **FAQ-Bedarf (ℹ️):** [FAQ_Bedarf]  
 **Blockiert:** [Blockiert]  
 **Erfolgsrate:** [Erfolgsrate]%  
 
 ---
 
-## 💡 Empfehlungen
+## Empfehlungen
 
 [Für jede Empfehlung:]
 [Empfehlung]
 
 ---
 
-## 📝 Bemerkungen
+## Bemerkungen
 
 [Bemerkungen]
 
@@ -252,7 +252,7 @@ ANFORDERUNGEN:
 
 WICHTIG:
 - Plattform-Symbole als Array verarbeiten und mit Leerzeichen joinen
-- Status-Symbole korrekt darstellen (✅, ❌, ⚠️, ℹ️, [])
+- Status-Symbole korrekt darstellen (,, ️, ℹ️, [])
 - Hierarchische Struktur mit Kategorien und Tests
 - Blockierte Tests nur anzeigen, wenn vorhanden
 
@@ -263,7 +263,7 @@ AUSGABE:
 
 ---
 
-## 🚀 PROMPT 3: Beispiel-Konfiguration erstellen
+## PROMPT 3: Beispiel-Konfiguration erstellen
 
 ### **Datei:** `examples/beispiel_qtstage_protokoll.json`
 
@@ -298,26 +298,26 @@ GERÄTE:
 1. Box:
    - ID: "01KAK3E2E2Q3CCERKSY25BZVWH"
    - Typ: "Box"
-   - Plattform: "🔌"
+ - Plattform: ""
 
 2. Laptop:
    - ID: "83638DA7-4AF7-4109-A0EA-A82FD3861775"
    - Typ: "Desktop"
-   - Plattform: "🖥️"
+ - Plattform: "️"
    - Name: "LAPTOP-P16V"
    - Details: "AMD Ryzen 9 PRO 7940HS, 64GB RAM, Windows 11 Business 25H2"
 
 3. iPhone:
    - ID: "iPhone-15"
    - Typ: "Mobile"
-   - Plattform: "📱"
+ - Plattform: ""
    - Name: "iPhone 15"
    - Details: "iOS 26.1"
 
 4. Android Tablet:
    - ID: "TB330FU"
    - Typ: "Mobile"
-   - Plattform: "📱"
+ - Plattform: ""
    - Name: "Lenovo Tab M11"
    - Details: "Android v15, Lenovo ZUI17.0.138"
 
@@ -327,56 +327,56 @@ Kategorie 1: "Genereller Start"
 - Test 1:
   - ID: "GS-001"
   - Testfall: "Start der App (Box): Startet App fehlerfrei?"
-  - Plattformen: ["🔌"]
-  - Anforderung: "🧪"
-  - Status: "✅"
+ - Plattformen: [""]
+ - Anforderung: ""
+ - Status: ""
   - Bemerkung: ""
 
 - Test 2:
   - ID: "GS-002"
   - Testfall: "Start der App (Cloud): Startet App fehlerfrei?"
-  - Plattformen: ["☁️"]
-  - Anforderung: "🧪"
-  - Status: "✅"
+ - Plattformen: ["️"]
+ - Anforderung: ""
+ - Status: ""
   - Bemerkung: ""
 
 - Test 3:
   - ID: "GS-003"
   - Testfall: "Startet App (iOS) fehlerfrei?"
-  - Plattformen: ["📱"]
-  - Anforderung: "🧪"
-  - Status: "✅"
+ - Plattformen: [""]
+ - Anforderung: ""
+ - Status: ""
   - Bemerkung: ""
 
 - Test 4:
   - ID: "GS-004"
   - Testfall: "Startet App (Android) fehlerfrei?"
-  - Plattformen: ["📱"]
-  - Anforderung: "🧪"
-  - Status: "✅"
+ - Plattformen: [""]
+ - Anforderung: ""
+ - Status: ""
   - Bemerkung: ""
 
 - Test 5:
   - ID: "GS-005"
   - Testfall: "Startet App (Windows) fehlerfrei?"
-  - Plattformen: ["🖥️"]
-  - Anforderung: "🧪"
-  - Status: "✅"
+ - Plattformen: ["️"]
+ - Anforderung: ""
+ - Status: ""
   - Bemerkung: ""
 
 - Test 6:
   - ID: "GS-006"
   - Testfall: "Startet App (macOS) fehlerfrei?"
-  - Plattformen: ["🖥️"]
-  - Anforderung: "🧪"
+ - Plattformen: ["️"]
+ - Anforderung: ""
   - Status: "[]"
   - Bemerkung: "Nicht getestet"
 
 - Test 7:
   - ID: "GS-007"
   - Testfall: "Startet App (Tizen) fehlerfrei?"
-  - Plattformen: ["🖥️"]
-  - Anforderung: "🧪"
+ - Plattformen: ["️"]
+ - Anforderung: ""
   - Status: "[]"
   - Bemerkung: "Nicht getestet"
 
@@ -386,42 +386,42 @@ Beschreibung: "UI: /authentication/challenge"
 - Test 1:
   - ID: "AUTH-001"
   - Testfall: "Hosenso Logo vorhanden? (CDN Funktionalität)"
-  - Plattformen: ["🔌", "☁️", "📱"]
-  - Anforderung: "🧪"
-  - Status: "✅"
+ - Plattformen: ["", "️", ""]
+ - Anforderung: ""
+ - Status: ""
   - UIScreen: "/authentication/challenge"
   - Bemerkung: ""
 
 - Test 2:
   - ID: "AUTH-002"
   - Testfall: "...leeren E-Mail-Adresse --> 'Die E-Mail-Adresse oder der Benutzername darf nicht leer sein.'"
-  - Plattformen: ["🔌", "☁️", "📱"]
-  - Anforderung: "🧪"
-  - Status: "✅"
+ - Plattformen: ["", "️", ""]
+ - Anforderung: ""
+ - Status: ""
   - UIScreen: "/authentication/challenge"
   - Bemerkung: ""
 
 - Test 3:
   - ID: "AUTH-003"
   - Testfall: "...ungültigen E-Mail-Adresse"
-  - Plattformen: ["🔌", "☁️", "📱"]
-  - Anforderung: "🧪"
-  - Status: "⚠️"
+ - Plattformen: ["", "️", ""]
+ - Anforderung: ""
+ - Status: "️"
   - UIScreen: "/authentication/challenge"
   - Bemerkung: "Funktioniert generell wie es soll nur auf ios gibts nicht den typischen warnhinweis das die email ungültig ist, wie bei den anderen geräten"
 
 BLOCKIERTE TESTS:
 - Testfall: "Nutzung des externen Authentifizierungsanbieters 'Microsoft'"
   Grund: "Weder auf Browser noch auf IOS App oder Android App die Möglichkeit zur Anmeldung über einen Authenticator gegeben ist!"
-  Plattformen: ["🔌", "☁️", "📱", "🖥️"]
+ Plattformen: ["", "️", "", "️"]
 
 - Testfall: "Saubere Behandlung bei Abbruch bei der Authentifizierung über 'Microsoft'"
   Grund: "Weder auf Browser noch auf IOS App oder Android App die Möglichkeit zur Anmeldung über einen Authenticator gegeben ist!"
-  Plattformen: ["🔌", "☁️", "📱", "🖥️"]
+ Plattformen: ["", "️", "", "️"]
 
 - Testfall: "Nutzung des externen Authentifizierungsanbieters 'Google'"
   Grund: "Weder auf Browser noch auf IOS App oder Android App die Möglichkeit zur Anmeldung über einen Authenticator gegeben ist!"
-  Plattformen: ["🔌", "☁️", "📱", "🖥️"]
+ Plattformen: ["", "️", "", "️"]
 
 STATISTIK:
 - Gesamt: 50 (geschätzt, basierend auf sichtbaren Tests)
@@ -448,7 +448,7 @@ AUSGABE:
 
 ---
 
-## 🚀 PROMPT 4: Tests schreiben
+## PROMPT 4: Tests schreiben
 
 ### **Datei:** `tests/QADocumentGenerator.Tests.ps1`
 
@@ -493,8 +493,8 @@ ANFORDERUNGEN:
       - Prüfe, dass "Authentifizierungsbildschirm" enthalten ist
 
    f) "Should include test status symbols"
-      - Prüfe, dass "✅" enthalten ist
-      - Prüfe, dass "⚠️" enthalten ist
+ - Prüfe, dass "" enthalten ist
+ - Prüfe, dass "️" enthalten ist
 
    g) "Should include blocked tests if present"
       - Prüfe, dass "Blockierte Tests" enthalten ist (falls vorhanden)
@@ -526,7 +526,7 @@ AUSGABE:
 
 ---
 
-## 🚀 PROMPT 5: Dokumentation aktualisieren
+## PROMPT 5: Dokumentation aktualisieren
 
 ### **Dateien:** `README.md`, `docs/ANLEITUNG_Windows11.md`
 
@@ -563,8 +563,8 @@ ANFORDERUNGEN:
       - Metadaten (Service Account ID, Start/Ende-Zeit)
       - Test-Accounts und Geräte-IDs
       - Hierarchische Test-Struktur (Kategorien)
-      - Plattform-Tags (🔌, ☁️, 📱, 🖥️)
-      - Erweiterte Status-Symbole (✅, ❌, ⚠️, ℹ️)
+ - Plattform-Tags (, ️,, ️)
+ - Erweiterte Status-Symbole (,, ️, ℹ️)
       - Blockierte Tests-Dokumentation
       - Detaillierte Statistik
 
@@ -600,13 +600,13 @@ ANFORDERUNGEN:
 
    ## Features
 
-   - ✅ Metadaten (Service Account ID, Start/Ende-Zeit)
-   - ✅ Test-Accounts und Geräte-IDs
-   - ✅ Hierarchische Test-Struktur
-   - ✅ Plattform-Tags (🔌, ☁️, 📱, 🖥️)
-   - ✅ Erweiterte Status-Symbole
-   - ✅ Blockierte Tests
-   - ✅ Detaillierte Statistik
+ - Metadaten (Service Account ID, Start/Ende-Zeit)
+ - Test-Accounts und Geräte-IDs
+ - Hierarchische Test-Struktur
+ - Plattform-Tags (, ️,, ️)
+ - Erweiterte Status-Symbole
+ - Blockierte Tests
+ - Detaillierte Statistik
 
    ## JSON-Struktur
 
@@ -629,7 +629,7 @@ AUSGABE:
 
 ---
 
-## ✅ SCHRITT-FÜR-SCHRITT ANLEITUNG
+## SCHRITT-FÜR-SCHRITT ANLEITUNG
 
 ### **1. Vorbereitung** (2 Minuten)
 
@@ -703,7 +703,7 @@ AUSGABE:
 
 ---
 
-## ✅ CHECKLISTE
+## CHECKLISTE
 
 - [ ] Prompt 1: JSON-Schema erstellt
 - [ ] Prompt 2: PowerShell-Generator erweitert
@@ -716,16 +716,16 @@ AUSGABE:
 
 ---
 
-## 🎯 ERWARTETES ERGEBNIS
+## ERWARTETES ERGEBNIS
 
 Nach Abschluss aller Prompts haben Sie:
 
-1. ✅ Neues Template "QTStageProtokoll"
-2. ✅ Vollständig funktionsfähiger Generator
-3. ✅ Beispiel-Konfiguration basierend auf Ihrem echten Testprotokoll
-4. ✅ Umfassende Tests
-5. ✅ Aktualisierte Dokumentation
-6. ✅ Alles auf GitHub
+1. Neues Template "QTStageProtokoll"
+2. Vollständig funktionsfähiger Generator
+3. Beispiel-Konfiguration basierend auf Ihrem echten Testprotokoll
+4. Umfassende Tests
+5. Aktualisierte Dokumentation
+6. Alles auf GitHub
 
 **Zeitaufwand:** ~45 Minuten  
 **Commits:** 6  
@@ -734,7 +734,7 @@ Nach Abschluss aller Prompts haben Sie:
 
 ---
 
-## 💡 TIPPS FÜR CURSOR
+## TIPPS FÜR CURSOR
 
 1. **Kontext hinzufügen:**
    - Markiere relevante Dateien im Explorer
@@ -754,5 +754,5 @@ Nach Abschluss aller Prompts haben Sie:
 
 ---
 
-**Viel Erfolg mit der Implementierung!** 🚀💪
+**Viel Erfolg mit der Implementierung!**
 

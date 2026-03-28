@@ -9,31 +9,31 @@
 
 ---
 
-## 🎯 Overview
+## Overview
 
 A PowerShell-based tool that automatically generates professional QA documentation in Markdown format. Simply input your data in a JSON file, and the script creates a fully formatted, professional document.
 
-> **⚡ 80% time savings** — Documentation time reduced from **15 minutes to 2 minutes** per document. Fully local, GDPR-compliant, Azure DevOps-ready.
+> ** 80% time savings** — Documentation time reduced from **15 minutes to 2 minutes** per document. Fully local, GDPR-compliant, Azure DevOps-ready.
 
 | Kennzahl | Wert |
 |---|---|
-| **Zeitersparnis** | ⚡ 80% (15 min → 2 min) |
+| **Zeitersparnis** | 80% (15 min → 2 min) |
 | **Dokumenttypen** | 6 (Bug, Test, QT Stage, Solution, Analysis, Test Cases) |
 | **CI/CD-Integration** | Azure DevOps Pipeline |
 | **Datenschutz** | DSGVO-konform (100% lokal) |
 | **Plattform** | Windows 10/11, PowerShell 5.1+ |
 
 **Key Features:**
-- ⚡ **80% time savings** - 15 minutes → 2 minutes per document
-- 📋 **Consistent formatting** - Always professional
-- 🔄 **Reproducible** - Same data = same document
-- 💾 **Version control friendly** - JSON + Markdown in Git
-- 🔒 **GDPR compliant** - Local processing, no cloud
-- 🚀 **Azure DevOps integration** - Automated CI/CD pipelines included
+- **80% time savings** - 15 minutes → 2 minutes per document
+- **Consistent formatting** - Always professional
+- **Reproducible** - Same data = same document
+- **Version control friendly** - JSON + Markdown in Git
+- **GDPR compliant** - Local processing, no cloud
+- **Azure DevOps integration** - Automated CI/CD pipelines included
 
 ---
 
-## 📋 Supported Document Types
+## Supported Document Types
 
 | Type | Description | Use Case |
 |------|-------------|----------|
@@ -46,7 +46,7 @@ A PowerShell-based tool that automatically generates professional QA documentati
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -82,7 +82,7 @@ For the easiest experience, use the interactive menu:
 
 ---
 
-## 📝 Usage
+## Usage
 
 ### Basic Usage
 
@@ -117,13 +117,13 @@ For the easiest experience, use the interactive menu:
    .\Generate-QADocument.ps1 -ConfigFile "my_bug.json" -Template "BugTicket"
    ```
 
-4. **Done!** 🎉
+4. **Done!**
    - Find your generated Markdown document in the same folder
    - Copy to Azure DevOps Wiki, GitHub, or your documentation system
 
 ---
 
-## 🔄 Azure DevOps Integration
+## Azure DevOps Integration
 
 **NEW!** Automated documentation generation with Azure DevOps Pipelines.
 
@@ -144,16 +144,16 @@ For the easiest experience, use the interactive menu:
    - Run!
 
 2. **Benefits:**
-   - ✅ Automatic documentation on every commit
-   - ✅ Batch processing for multiple documents
-   - ✅ Scheduled daily generation
-   - ✅ Direct upload to Azure DevOps Wiki
-   - ✅ Email notifications (optional)
+ - Automatic documentation on every commit
+ - Batch processing for multiple documents
+ - Scheduled daily generation
+ - Direct upload to Azure DevOps Wiki
+ - Email notifications (optional)
 
 3. **Full Documentation:**
-   - 📖 [Azure DevOps Setup Guide](docs/AZURE_DEVOPS_SETUP.md)
-   - 📋 [Pipeline Configuration](azure-pipelines.yml)
-   - 🔧 [Advanced Workflows](.azuredevops/pipelines/)
+ - [Azure DevOps Setup Guide](docs/AZURE_DEVOPS_SETUP.md)
+ - [Pipeline Configuration](azure-pipelines.yml)
+ - [Advanced Workflows](.azuredevops/pipelines/)
 
 **Example Workflow:**
 ```bash
@@ -169,29 +169,29 @@ git push
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 qa-documentation-generator/
-├── Generate-QADocument.ps1      # Main PowerShell script
-├── SCHNELLSTART.bat             # Interactive quick-start menu
-├── README.md                    # This file
-├── LICENSE                      # MIT License
-├── docs/
-│   ├── ANLEITUNG_Windows11.md   # Complete guide (German)
-│   └── USAGE.md                 # Detailed usage examples
-├── templates/
-│   ├── bug_ticket.json          # Empty bug ticket template
-│   ├── test_protocol.json       # Empty test protocol template
-│   └── solution_concept.json   # Empty solution concept template
-└── examples/
-    ├── bug_ticket.json          # Example bug ticket with data
-    └── test_protocol.json       # Example test protocol with data
+ Generate-QADocument.ps1 # Main PowerShell script
+ SCHNELLSTART.bat # Interactive quick-start menu
+ README.md # This file
+ LICENSE # MIT License
+ docs/
+ ANLEITUNG_Windows11.md # Complete guide (German)
+ USAGE.md # Detailed usage examples
+ templates/
+ bug_ticket.json # Empty bug ticket template
+ test_protocol.json # Empty test protocol template
+ solution_concept.json # Empty solution concept template
+ examples/
+ bug_ticket.json # Example bug ticket with data
+ test_protocol.json # Example test protocol with data
 ```
 
 ---
 
-## 🎨 Example: Bug Ticket
+## Example: Bug Ticket
 
 **Input:** `bug_3690.json`
 ```json
@@ -220,33 +220,33 @@ When the device is in flight mode, the app shows the error message...
 ...
 ```
 
-**Time saved:** 15 minutes → 2 minutes ⚡
+**Time saved:** 15 minutes → 2 minutes
 
 ---
 
-## 💡 Benefits
+## Benefits
 
 ### For Individuals
-- ⚡ **80% time savings** on documentation
-- 📋 **Consistent format** - always professional
-- 🔄 **Reproducible** - same data = same document
-- 💾 **Version control** - JSON + MD in Git
+- **80% time savings** on documentation
+- **Consistent format** - always professional
+- **Reproducible** - same data = same document
+- **Version control** - JSON + MD in Git
 
 ### For Teams
-- 🤝 **Common standards** - everyone uses the same templates
-- 📈 **Scalable** - 1 bug ticket or 100 bug tickets
-- 🎯 **Quality assurance** - no forgotten fields
-- 🔄 **Onboarding** - new team members get started quickly
+- **Common standards** - everyone uses the same templates
+- **Scalable** - 1 bug ticket or 100 bug tickets
+- **Quality assurance** - no forgotten fields
+- **Onboarding** - new team members get started quickly
 
 ### For Organizations
-- 💰 **Cost savings** - reduced documentation time
-- 📊 **Metrics** - measurable efficiency gains
-- 🔒 **Compliance** - GDPR compliant (local processing)
-- 🎯 **Standardization** - consistent documentation across teams
+- **Cost savings** - reduced documentation time
+- **Metrics** - measurable efficiency gains
+- **Compliance** - GDPR compliant (local processing)
+- **Standardization** - consistent documentation across teams
 
 ---
 
-## 🛠️ Advanced Usage
+## ️ Advanced Usage
 
 ### Batch Processing
 
@@ -289,7 +289,7 @@ echo Done!
 
 ---
 
-## ✅ Tests (Pester)
+## Tests (Pester)
 
 Du kannst die Basis-Tests (Smoke + Markdown-Strukturprüfung) so ausführen:
 
@@ -301,7 +301,7 @@ Hinweis: Das Script installiert bei Bedarf Pester (>= 5) im `CurrentUser` Scope.
 
 ---
 
-## 📄 PDF Export (Pandoc)
+## PDF Export (Pandoc)
 
 Wenn du zusätzlich ein PDF brauchst, kannst du Pandoc verwenden:
 
@@ -314,7 +314,7 @@ Wenn du zusätzlich ein PDF brauchst, kannst du Pandoc verwenden:
 
 ---
 
-## 📖 Documentation
+## Documentation
 
 - **[Complete Guide (German)](docs/ANLEITUNG_Windows11.md)** - Step-by-step installation and usage
 - **[Usage Examples](docs/USAGE.md)** - Detailed examples for all document types
@@ -323,7 +323,7 @@ Wenn du zusätzlich ein PDF brauchst, kannst du Pandoc verwenden:
 
 ---
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### "Script cannot be loaded"
 
@@ -349,7 +349,7 @@ For more troubleshooting, see the [Complete Guide](docs/ANLEITUNG_Windows11.md).
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
@@ -362,13 +362,13 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 👤 Author
+## Author
 
 **QA Engineer** | Passionate about test automation and quality assurance
 
@@ -377,7 +377,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Inspired by the need for efficient QA documentation
 - Built with PowerShell for Windows environments
@@ -385,7 +385,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 📊 Stats
+## Stats
 
 ![GitHub stars](https://img.shields.io/github/stars/tibo47-161/qa-documentation-generator?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/tibo47-161/qa-documentation-generator?style=social)
@@ -393,4 +393,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Made with ❤️ for the QA community**
+**Made with ️ for the QA community**

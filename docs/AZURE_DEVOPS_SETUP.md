@@ -4,18 +4,18 @@
 
 ---
 
-## 🎯 Übersicht
+## Übersicht
 
 Dieses Dokument beschreibt, wie Sie die Azure DevOps Pipelines für den QA-Dokumenten-Generator einrichten. Mit diesen Pipelines können Sie:
 
-- ✅ Automatisch Dokumentation bei Git-Commits generieren
-- ✅ Batch-Generierung aller Dokumente auf Knopfdruck
-- ✅ Geplante tägliche Generierung neuer Dokumente
-- ✅ Automatisches Hochladen ins Azure DevOps Wiki
+- Automatisch Dokumentation bei Git-Commits generieren
+- Batch-Generierung aller Dokumente auf Knopfdruck
+- Geplante tägliche Generierung neuer Dokumente
+- Automatisches Hochladen ins Azure DevOps Wiki
 
 ---
 
-## 📋 Voraussetzungen
+## Voraussetzungen
 
 ### Azure DevOps
 - Azure DevOps Organisation und Projekt
@@ -28,7 +28,7 @@ Dieses Dokument beschreibt, wie Sie die Azure DevOps Pipelines für den QA-Dokum
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Pipeline erstellen
 
@@ -44,7 +44,7 @@ Dieses Dokument beschreibt, wie Sie die Azure DevOps Pipelines für den QA-Dokum
 
 ---
 
-## 📂 Verfügbare Pipelines
+## Verfügbare Pipelines
 
 ### 1. Standard Pipeline (`azure-pipelines.yml`)
 
@@ -112,7 +112,7 @@ git push
 
 ---
 
-## 🔧 Erweiterte Konfiguration
+## Erweiterte Konfiguration
 
 ### Wiki-Upload aktivieren
 
@@ -187,7 +187,7 @@ Standardmäßig sucht die Pipeline in `data/` und `examples/`. Für einen custom
 
 ---
 
-## 📊 Artifacts & Reports
+## Artifacts & Reports
 
 ### Wo finde ich generierte Dokumente?
 
@@ -209,7 +209,7 @@ Standardmäßig sucht die Pipeline in `data/` und `examples/`. Für einen custom
 
 ---
 
-## 🎨 Pipeline-Badge im README
+## Pipeline-Badge im README
 
 Fügen Sie ein Pipeline-Badge zu Ihrem README hinzu:
 
@@ -224,7 +224,7 @@ Fügen Sie ein Pipeline-Badge zu Ihrem README hinzu:
 
 ---
 
-## 🔒 Sicherheit & Berechtigungen
+## Sicherheit & Berechtigungen
 
 ### Service Connection
 
@@ -242,7 +242,7 @@ Erforderliche Berechtigungen:
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### "Execution Policy" Fehler
 
@@ -277,18 +277,18 @@ Erforderliche Berechtigungen:
 
 ---
 
-## 📈 Best Practices
+## Best Practices
 
 ### 1. Ordnerstruktur
 
 ```
 repository/
-├── data/                    # Produktionsdaten
-│   ├── bugs/
-│   ├── tests/
-│   └── solutions/
-├── examples/                # Beispieldaten
-└── templates/               # Leere Vorlagen
+ data/ # Produktionsdaten
+ bugs/
+ tests/
+ solutions/
+ examples/ # Beispieldaten
+ templates/ # Leere Vorlagen
 ```
 
 ### 2. Naming Conventions
@@ -315,18 +315,18 @@ git commit -m "Update"
 
 ---
 
-## 🎯 Nächste Schritte
+## Nächste Schritte
 
-1. ✅ Standard-Pipeline einrichten
-2. ✅ Ersten Test-Run durchführen
-3. ✅ Batch-Pipeline für bestehende Dokumente
-4. ✅ Wiki-Upload konfigurieren (optional)
-5. ✅ Scheduled Pipeline aktivieren
-6. ✅ Team schulen
+1. Standard-Pipeline einrichten
+2. Ersten Test-Run durchführen
+3. Batch-Pipeline für bestehende Dokumente
+4. Wiki-Upload konfigurieren (optional)
+5. Scheduled Pipeline aktivieren
+6. Team schulen
 
 ---
 
-## 📚 Weitere Ressourcen
+## Weitere Ressourcen
 
 - [Azure Pipelines Dokumentation](https://docs.microsoft.com/en-us/azure/devops/pipelines/)
 - [YAML Schema Reference](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema)
@@ -334,4 +334,4 @@ git commit -m "Update"
 
 ---
 
-**Viel Erfolg mit Ihrer automatisierten QA-Dokumentation!** 🚀
+**Viel Erfolg mit Ihrer automatisierten QA-Dokumentation!**
