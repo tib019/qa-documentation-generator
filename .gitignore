@@ -1,0 +1,54 @@
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Node.js
+node_modules/
+
+# Distribution / packaging
+dist/
+build/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# Testing
+.pytest_cache/
+coverage/
+
+# Database
+*.sqlite3
+*.db
+
+# Logs
+*.log
+
+# Secrets / credentials
+*.key
+*.pem
+
+# macOS
+.DS_Store
+
+# PowerShell output / temp
+*.tmp
+*.bak
+*.backup
+
+# Azure DevOps / CI artifacts
+TestResults/
+PublishOutput/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
