@@ -57,7 +57,7 @@ A PowerShell-based tool that automatically generates professional QA documentati
 
 1. **Clone the repository**
    ```powershell
-   git clone https://github.com/tibo47-161/qa-documentation-generator.git
+   git clone https://github.com/tib019/qa-documentation-generator.git
    cd qa-documentation-generator
    ```
 
@@ -139,7 +139,7 @@ For the easiest experience, use the interactive menu:
 
 1. **Create Pipeline in Azure DevOps:**
    - Pipelines → New Pipeline → GitHub
-   - Select repository: `tibo47-161/qa-documentation-generator`
+   - Select repository: `tib019/qa-documentation-generator`
    - Choose existing YAML: `/azure-pipelines.yml`
    - Run!
 
@@ -372,7 +372,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **QA Engineer** | Passionate about test automation and quality assurance
 
-- GitHub: [@tibo47-161](https://github.com/tibo47-161)
+- GitHub: [@tib019](https://github.com/tib019)
 - Email: tobias.buss.dev@gmail.com
 
 ---
@@ -387,9 +387,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Stats
 
-![GitHub stars](https://img.shields.io/github/stars/tibo47-161/qa-documentation-generator?style=social)
-![GitHub forks](https://img.shields.io/github/forks/tibo47-161/qa-documentation-generator?style=social)
-![GitHub issues](https://img.shields.io/github/issues/tibo47-161/qa-documentation-generator)
+![GitHub stars](https://img.shields.io/github/stars/tib019/qa-documentation-generator?style=social)
+![GitHub forks](https://img.shields.io/github/forks/tib019/qa-documentation-generator?style=social)
+![GitHub issues](https://img.shields.io/github/issues/tib019/qa-documentation-generator)
 
 ---
 
